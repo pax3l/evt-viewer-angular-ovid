@@ -190,3 +190,4 @@ export interface CustomEditorialConvention {
 }
 
 export type TextFlow = 'prose' | 'verses';
+export type HideDeletions = 'show deletions' | 'hide deletions';

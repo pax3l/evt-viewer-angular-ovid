@@ -139,6 +139,7 @@ import { VersionPanelComponent } from './panels/version-panel/version-panel.comp
 import { WitnessPanelComponent } from './panels/witness-panel/witness-panel.component';
 import { XmlBeautifyPipe } from './pipes/xml-beautify.pipe';
 import { XMLParsers } from './services/xml-parsers/xml-parsers';
+import { ChangeLayerSelectorComponent } from './components/change-layer-selector/change-layer-selector.component';
 
 const routes: Routes = [
 ];
@@ -213,6 +214,7 @@ const DynamicComponents = [
     AppComponent,
     BiblioEntryComponent,
     BiblioListComponent,
+    ChangeLayerSelectorComponent,
     CollationComponent,
     ContentViewerComponent,
     CriticalApparatusComponent,

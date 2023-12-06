@@ -187,5 +187,7 @@
   "addImage": "Aggiungi immagine",
   "removeImage": "Rimuovi immagine"
   "corrSeq": "Sequenza correzioni",
-  "criticalNote": "Nota critica"
+  "criticalNote": "Nota critica",
+  "show deletions": "Mostra cancellazioni",
+  "hide deletions": "Nascondi cancellazioni"
 }
