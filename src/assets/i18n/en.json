@@ -189,6 +189,6 @@
     "removeImage": "Remove image"
     "corrSeq": "Correction sequence",
     "criticalNote": "Critical note",
-    "show deletions": "Show deletions",
-    "hide deletions": "Hide deletions"
+    "showsDeletions": "Shows deletions",
+    "hidesDeletions": "Hides deletions"
 }
