@@ -62,6 +62,14 @@ export class ContentViewerComponent implements OnDestroy {
   get withDeletions() { return this.withDels; }
   withDeletionsChange = new BehaviorSubject<boolean>(true);
 
+  private selLayer: boolean;
+  @Input() set selectedLayer(d: boolean) {
+    this.selLayer = d;
+    this.selectedLayerChange.next(d);
+  }
+  get selectedLayer() { return this.selLayer; }
+  selectedLayerChange = new BehaviorSubject<boolean>(true);
+
   constructor(
     private componentRegister: ComponentRegisterService,
     private entitiesSelectService: EntitiesSelectService,
@@ -85,8 +93,9 @@ export class ContentViewerComponent implements OnDestroy {
     this.editionLevelChange,
     this.textFlowChange,
     this.withDeletionsChange,
+    this.selectedLayerChange,
   ]).pipe(
-    map(([data, itemsToHighlight, editionLevel, textFlow, withDeletions]) => {
+    map(([data, itemsToHighlight, editionLevel, textFlow, withDeletions, selLayer]) => {
       if (this.toBeHighlighted()) {
         return {
           data,
@@ -95,6 +104,7 @@ export class ContentViewerComponent implements OnDestroy {
           editionLevel,
           textFlow,
           withDeletions,
+          selLayer,
         };
       }
 
@@ -103,6 +113,7 @@ export class ContentViewerComponent implements OnDestroy {
         editionLevel,
         textFlow,
         withDeletions,
+        selLayer,
       };
     }),
     shareReplay(1),
