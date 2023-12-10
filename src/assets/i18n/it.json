@@ -188,6 +188,6 @@
   "removeImage": "Rimuovi immagine"
   "corrSeq": "Sequenza correzioni",
   "criticalNote": "Nota critica",
-  "showsDeletions": "Con cancellazioni",
-  "hidesDeletions": "Senza cancellazioni"
+  "showsDeletions": "Mostra cancellazioni",
+  "hidesDeletions": "Nascondi cancellazioni"
 }
