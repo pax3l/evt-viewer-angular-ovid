@@ -1323,7 +1323,7 @@ export class Mod extends GenericElement {
     changeLayer: string;
     varSeq: string;
     isRdg: boolean;
-    insideApp: boolean;
+    insideApp: [boolean, string];
     content: Array<ParseResult<GenericElement>>;
     note: string[];
     originalEncoding: OriginalEncodingNodeType
