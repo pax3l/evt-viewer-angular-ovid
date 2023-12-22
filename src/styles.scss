@@ -271,3 +271,7 @@ evt-analogue-detail evt-original-encoding-viewer code {
     background-color: rgb(248, 230, 191);
   }
 }
+
+evt-mod-detail .tab-content {
+  display: block ruby;
+}
