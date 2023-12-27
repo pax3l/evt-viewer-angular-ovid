@@ -1324,7 +1324,7 @@ export class Mod extends GenericElement {
     isRdg: boolean;
     insideApp: [boolean, string];
     content: Array<ParseResult<GenericElement>>;
-    note: string[];
+    notes: Note[];
     originalEncoding: OriginalEncodingNodeType
 }
 
