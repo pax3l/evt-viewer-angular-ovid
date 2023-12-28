@@ -166,5 +166,6 @@
     }
   },
   "defaultImageZoomLevel": 0.8,
-  "showSubstitutionMarker": true
+  "showSubstitutionMarker": true,
+  "multiPageEngineForCriticalEdition": false
 }
