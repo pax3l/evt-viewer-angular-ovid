@@ -450,10 +450,12 @@ export class TermParser extends GenericElemParser implements Parser<XMLElement> 
 
 @xmlParser('milestone', MilestoneParser)
 export class MilestoneParser extends GenericElemParser implements Parser<XMLElement> {
+
     parse(xml: XMLElement): Milestone {
 
         const endElement = (xml.getAttribute('spanTo')) ? getExternalElements(xml, ['spanTo'], 'xml:id', 'anchor') : [];
         const includedElements = (endElement.length !== 0) ? getElementsBetweenTreeNode(xml, endElement[0]) : [];
+
         const parsedElements = (includedElements.length !== 0) ?
             includedElements.map((x: XMLElement) => (x.nodeType !== 3 && x.nodeType !== 8) ? super.parse(x) : x) : [];
 
@@ -522,12 +524,10 @@ export class SpanParser extends GenericElemParser implements Parser<XMLElement> 
             };
 
         } else if ((xml.tagName === 'addSpan') || (xml.tagName === 'delSpan')) {
-            //console.log('span',xml);
-            let included = { text: '', elements: [] };
-            let parsedElements = [];
-            //const startingElement = getExternalElements(xml, ['xml:id'], 'xml:id', xml.tagName);
-            //included = getDelAddSpanIncludedElements(startingElement[0].parentElement, xml.getAttribute('spanTo'));
-            parsedElements = included.elements.map((x) => super.parse(x));
+            const endElement = (xml.getAttribute('spanTo')) ? getExternalElements(xml, ['spanTo'], 'xml:id', 'anchor') : [];
+            const includedElements = (endElement.length !== 0) ? getElementsBetweenTreeNode(xml, endElement[0]) : [];
+            const parsedElements = (includedElements.length !== 0) ?
+                includedElements.map((x: XMLElement) => (x.nodeType !== 3 && x.nodeType !== 8) ? super.parse(x) : x) : [];
 
             return <Span> {
                 type: Span,
@@ -535,7 +535,7 @@ export class SpanParser extends GenericElemParser implements Parser<XMLElement> 
                 attributes: this.attributeParser.parse(xml),
                 from: xml.getAttribute('xml:id'),
                 to: xml.getAttribute('spanTo'),
-                includedText: included.text,
+                includedText: '',
                 includedElements: parsedElements,
                 content: parseChildren(xml, this.genericParse),
             };
