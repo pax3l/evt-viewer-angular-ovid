@@ -206,8 +206,9 @@ export class EVTStatusService {
         };
     }
 
+    /** to avoid loops this function must not be fed with nodes */
     getPageElementsByClassList(classList) {
-        const attributesNotIncludedInSearch = ['originalEncoding','type'];
+        const attributesNotIncludedInSearch = ['originalEncoding','type','spanElements'];
         const maxEffort = 4000;
 
         return this.currentStatus$.pipe(
