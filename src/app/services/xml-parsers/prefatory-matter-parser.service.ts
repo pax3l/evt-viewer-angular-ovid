@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { map, shareReplay } from 'rxjs/operators';
-import { EncodingDesc, FileDesc, ProfileDesc, ProjectInfo, RevisionDesc, XMLElement } from '../../models/evt-models';
+import { BibliographicDesc, EncodingDesc, FileDesc, ProfileDesc, ProjectInfo, RevisionDesc, XMLElement } from '../../models/evt-models';
 import { EditionDataService } from '../edition-data.service';
 import { queryAndParseElement } from './basic-parsers';
 
@@ -35,6 +35,7 @@ export class PrefatoryMatterParserService {
       encodingDesc: queryAndParseElement<EncodingDesc>(source, 'encodingDesc', true),
       profileDesc: queryAndParseElement<ProfileDesc>(source, 'profileDesc', true),
       revisionDesc: queryAndParseElement<RevisionDesc>(source, 'revisionDesc', true),
+      bibliographicDesc: queryAndParseElement<BibliographicDesc>(source, 'listBibl', true),
     };
   }
 }
