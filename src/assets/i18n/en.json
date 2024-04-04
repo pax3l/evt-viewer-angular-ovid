@@ -173,12 +173,12 @@
     "omit": "omit.",
     "wit": "Wit:",
     "xml": "XML",
-    "criticalApparatus":"Critical Apparatus",
+    "criticalApparatus": "Critical Apparatus",
     "sources": "Sources",
     "analogues": "Analogues",
     "source": "Source",
     "analogue": "Analogue",
-    "notes":"Notes",
+    "notes": "Notes",
     "refBibl": "Bibliographic references",
     "quotedSources": "Quoted sources",
     "quotedText": "Text",
@@ -186,5 +186,12 @@
     "analogueIn": "Analogue in",
     "corresps": "Correspondences",
     "addImage": "Add image",
-    "removeImage": "Remove image"
+    "removeImage": "Remove image",
+    "bibliography": "Bibliografia",
+    "style": "Style",
+    "sortBy": "Sort by",
+    "year": "Year",
+    "order": "Order",
+    "asc": "Ascendent",
+    "desc": "Descendent"
 }

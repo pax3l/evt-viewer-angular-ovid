@@ -185,5 +185,12 @@
   "analogueIn": "Passo parallelo in",
   "corresps": "Corrispondenze",
   "addImage": "Aggiungi immagine",
-  "removeImage": "Rimuovi immagine"
+  "removeImage": "Rimuovi immagine",
+  "bibliography": "Bibliografia",
+  "style": "Stile",
+  "sortBy": "Ordina per",
+  "year": "Anno",
+  "order": "Ordine",
+  "asc": "Crescente",
+  "desc": "Decrescente"
 }
