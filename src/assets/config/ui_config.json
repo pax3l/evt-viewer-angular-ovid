@@ -76,5 +76,20 @@
 	"thumbnailsButton": true,
 	"viscollButton": true,
 	"theme": "modern",
-	"syncZonesHighlightButton": true
+	"syncZonesHighlightButton": true,
+	"defaultBibliographicStyle": "Chicago",
+	"allowedBibliographicStyles": {
+		"Chicago": {
+			"label": "Chicago",
+			"enabled": true
+		},
+		"APA": {
+			"label": "APA",
+			"enabled": false
+		},
+		"MLA": {
+			"label": "MLA",
+			"enabled": true
+		}
+	}
 }
