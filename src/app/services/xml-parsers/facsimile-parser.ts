@@ -14,7 +14,6 @@ import {
 import { AttributeParser, EmptyParser } from './basic-parsers';
 import { createParser, getID, parseChildren, Parser } from './parser-models';
 
-
 @xmlParser('facsimile', FacsimileParser)
 export class FacsimileParser extends EmptyParser implements Parser<XMLElement> {
     attributeParser = createParser(AttributeParser, this.genericParse);

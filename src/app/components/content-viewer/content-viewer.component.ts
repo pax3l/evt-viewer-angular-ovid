@@ -19,7 +19,7 @@ import { AdditionComponent } from '../addition/addition.component';
 export class ContentViewerComponent implements OnDestroy {
   private _content: GenericElement;
 
-  @Input() catturaMouse = false;
+  @Input() mouseCapture = false;
 
   @Input() set content(genericElement: GenericElement) {
     this._content = genericElement;

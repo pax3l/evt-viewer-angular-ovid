@@ -158,8 +158,8 @@ export class ImageGrpPanelComponent implements OnDestroy, AfterViewInit{
       this.currentPage$.next(page)
     })
   }
-  onPageChange(pageId: string){
 
+  onPageChange(pageId: string){
     this.pageID = pageId;
     this.evtModelService.imageDoublePages$.pipe(
         first(),

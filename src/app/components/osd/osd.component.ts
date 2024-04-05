@@ -191,7 +191,7 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
         console.log('init');
 
         if (!!tileSources) {
-          //TODO: controllare questo, solo per test
+          //TODO: check this, for test only
           if (tileSources.length === 0){
 
            const tiles = pages.map((p) =>( {
@@ -363,7 +363,6 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
           },
           clearBeforeRedraw: true,
         });
-        //}
       }));
   }
 
@@ -372,6 +371,5 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
     this.linesHighlightService.clearHighlightText();
     this.unsubscribeAll$.next();
     this.unsubscribeAll$.complete();
-
   }
 }

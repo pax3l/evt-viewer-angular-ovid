@@ -284,8 +284,7 @@ export class EVTModelService {
                 return pv + cv.corresp.replace('#', '');
               }
 
-return pv + '-' + cv.corresp.replace('#', '');
-
+              return pv + '-' + cv.corresp.replace('#', '');
             }, '');
 
             const imagesFolderUrl = AppConfig.evtSettings.files.imagesFolderUrls.double;
@@ -296,10 +295,10 @@ return pv + '-' + cv.corresp.replace('#', '');
               height: 720,
             };
 
-return r;
+            return r;
           });
 
-return {
+          return {
             type: 'default',
             value: {
               xmlImages: result,
@@ -307,8 +306,7 @@ return {
           };
         }
 
-return undefined;
-
+        return undefined;
       }),
   );
 
@@ -339,11 +337,11 @@ return undefined;
   );
 
   public readonly specialChars$ = combineLatest([
-    this.characters$,
-    this.glyphs$,
-  ]).pipe(
-    map(([chars, glyphs]) => chars.concat(glyphs)),
-  );
+      this.characters$,
+      this.glyphs$,
+    ]).pipe(
+      map(([chars, glyphs]) => chars.concat(glyphs)),
+    );
 
   public readonly msDesc$ = this.editionSource$.pipe(
     map((source) => this.msDescParser.parseMsDesc(source)),
