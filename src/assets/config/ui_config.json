@@ -77,19 +77,65 @@
 	"viscollButton": true,
 	"theme": "modern",
 	"syncZonesHighlightButton": true,
-	"defaultBibliographicStyle": "Chicago",
+	"defaultBibliographicStyle": "chicago",
 	"allowedBibliographicStyles": {
-		"Chicago": {
+		"chicago": {
+			"id": "chicago",
 			"label": "Chicago",
-			"enabled": true
+			"enabled": true,
+			"propsOrder": [
+				"author",
+				"date",
+				"title",
+				"publisher",
+				"citedRange",
+				"biblScope",
+				"pubPlace",
+				"editor"
+			],
+			"properties": {
+				"titleQuotes": true,
+				"empashized": [
+					"publisher"
+				],
+				"inBrackets": [
+					"citedRange"
+				]
+			}
 		},
-		"APA": {
+		"apa": {
+			"id": "apa",
 			"label": "APA",
-			"enabled": false
+			"enabled": false,
+			"propsOrder": [
+				"author",
+				"date",
+				"title",
+				"publisher",
+				"citedRange",
+				"biblScope",
+				"pubPlace",
+				"editor"
+			],
+			"properties": {
+				"titleQuotes": false,
+				"empashized": [],
+				"inBrackets": [
+					"date"
+				]
+			}
 		},
-		"MLA": {
+		"mla": {
+			"id": "mla",
 			"label": "MLA",
-			"enabled": true
+			"enabled": true,
+			"properties": {
+				"titleQuotes": false,
+				"empashized": [
+					"publisher"
+				],
+				"inBrackets": []
+			}
 		}
 	}
 }

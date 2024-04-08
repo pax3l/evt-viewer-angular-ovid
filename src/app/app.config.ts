@@ -97,7 +97,13 @@ export interface UiConfig {
 		[key: string]: {
             id: BibliographicStyle,
 			label: string,
-			enabled: boolean
+			enabled: boolean,
+            propsOrder: string[],
+            properties: {
+                titleQuotes: boolean,
+                emphasized: string[],
+                inBrackets: string[]
+            }
 		}
 	}
     theme: 'neutral' | 'modern' | 'classic';

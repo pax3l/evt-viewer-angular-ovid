@@ -1,0 +1,16 @@
+<ng-container *ngIf="data.type && (data.type.name === 'BibliographicEntry')">
+    <ng-container *ngFor="let element of showList | keyvalue; let i = index">
+        <ng-container *ngIf="showEmptyValues || (data[element.value] && data[element.value].length > 0)">
+            <ng-container *ngIf="showAttrNames">{{element.value}}: </ng-container>
+            <ng-container *ngIf="data[element.value]"
+                [ngClass]="styleProperties.emphasized.find(element) ? 'font-italic' : ''">
+                <ng-container *ngIf="styleProperties.inBrackets.find(element)">(</ng-container>
+                <ng-container *ngIf="styleProperties.titleQuotes">"</ng-container>
+                {{ data[element.value] }} <ng-container *ngIf="styleProperties.titleQuotes">"</ng-container>
+                <ng-container *ngIf="styleProperties.inBrackets.find(element)">)</ng-container><span
+                    *ngIf="data[element.value].length > 0" [class.hidden]="(!isCommaSeparated)">,</span>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="showMainElemTextContent">{{ data.text }}</ng-container>
+</ng-container>
