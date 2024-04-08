@@ -1310,9 +1310,8 @@ export class RevisionDesc extends GenericElement {
     status?: Status | string;
 }
 
-export class BibliographicDesc extends GenericElement {
-    biblioEntries: BibliographicEntry[];
-    biblioStructEntries: BibliographicStructEntry[];
+export class BibliographyInfo {
+    bibliographicEntries: Array<BibliographicEntry | BibliographicStructEntry>;
 }
 
 export class ProjectInfo {
@@ -1320,7 +1319,6 @@ export class ProjectInfo {
     encodingDesc: EncodingDesc;
     profileDesc: ProfileDesc;
     revisionDesc: RevisionDesc;
-    bibliographicDesc: BibliographicDesc;
 }
 
 export interface ViewerDataValue {

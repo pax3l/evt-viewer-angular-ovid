@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ParserRegister } from '.';
-import { BibliographyClass, XMLElement } from '../../models/evt-models';
+import { BibliographyClass, BibliographyInfo, XMLElement } from '../../models/evt-models';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +15,14 @@ export class BibliographicEntriesParserService {
     .map((bib) => bibliographicParser.parse(bib));
   }
 
+  parseBibliographicEntries(xml: XMLElement) {
+    const biblParser = ParserRegister.get(this.parserName);
+
+    return {
+      type: BibliographyInfo,
+      bibliographicEntries: Array.from(xml.querySelectorAll<XMLElement>('bibl')).map((s) => biblParser.parse(s))
+      .concat(Array.from(xml.querySelectorAll<XMLElement>('biblStruct')).map((s) => biblParser.parse(s))),
+    }
+  }
 }
 
