@@ -1,0 +1,4 @@
+<label for="biblStyleSelect">{{ 'style' | translate }}</label>
+<ng-select id="biblStyleSelect" [items]="bibliographicStyles" bindLabel="label" bindValue="id" [clearable]="false"
+    [searchable]="true" [ngModel]="selectedStyle$ | async" (click)="stopPropagation($event)">
+</ng-select>
