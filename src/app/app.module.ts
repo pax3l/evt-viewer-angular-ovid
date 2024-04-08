@@ -33,6 +33,7 @@ import { ApparatusEntryComponent } from './components/apparatus-entry/apparatus-
 import { ApparatusEntryDetailComponent } from './components/apparatus-entry/apparatus-entry-detail/apparatus-entry-detail.component';
 import { ApparatusEntryReadingsComponent } from './components/apparatus-entry/apparatus-entry-readings/apparatus-entry-readings.component';
 import { BiblioEntryComponent } from './components/biblio/biblio.component';
+import { BibliographyInfoComponent } from './components/bibliography-info/bibliography-info.component';
 import { BiblioListComponent } from './components/biblioList/biblio-list.component';
 import { CharComponent } from './components/char/char.component';
 import { ChoiceComponent } from './components/choice/choice.component';
@@ -208,6 +209,7 @@ const DynamicComponents = [
     AnnotatorDirective,
     AppComponent,
     BiblioEntryComponent,
+    BibliographyInfoComponent,
     BiblioListComponent,
     CollationComponent,
     ContentViewerComponent,

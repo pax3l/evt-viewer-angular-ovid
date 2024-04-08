@@ -1,0 +1,21 @@
+<evt-bibliographic-style-selector></evt-bibliographic-style-selector>
+<div class="evt-bibliography-content list-group">
+    <ng-container *ngFor="let elem of biblList">
+        <span>
+            <ng-container *ngIf="elem.type && elem.type.name === 'BibliographicEntry'">
+                <evt-styled-biblio-entry [data]="elem"></evt-styled-biblio-entry>
+            </ng-container>
+            <!-- <ng-container *ngIf="elem.type && elem.type.name === 'BibliographicStructEntry'">
+                <ng-container *ngFor="let analythicElem of elem.analytic">
+                    <evt-styled-biblio-entry [data]="analythicElem"></evt-styled-biblio-entry>
+                </ng-container>
+                <ng-container *ngFor="let monogr of elem.monogrs">
+                    <evt-styled-biblio-entry [data]="monogr"></evt-styled-biblio-entry>
+                </ng-container>
+                <ng-container *ngFor="let serie of elem.series">
+                    <evt-styled-biblio-entry [data]="serie"></evt-styled-biblio-entry>
+                </ng-container>
+            </ng-container> -->
+        </span>
+    </ng-container>
+</div>
