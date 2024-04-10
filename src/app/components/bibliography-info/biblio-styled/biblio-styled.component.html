@@ -1,14 +1,16 @@
 <ng-container *ngIf="data.type && (data.type.name === 'BibliographicEntry')">
-    <ng-container *ngFor="let element of showList | keyvalue; let i = index">
-        <ng-container *ngIf="showEmptyValues || (data[element.value] && data[element.value].length > 0)">
-            <ng-container *ngIf="showAttrNames">{{element.value}}: </ng-container>
-            <ng-container *ngIf="data[element.value]"
-                [ngClass]="styleProperties.emphasized.find(element) ? 'font-italic' : ''">
-                <ng-container *ngIf="styleProperties.inBrackets.find(element)">(</ng-container>
-                <ng-container *ngIf="styleProperties.titleQuotes">"</ng-container>
-                {{ data[element.value] }} <ng-container *ngIf="styleProperties.titleQuotes">"</ng-container>
-                <ng-container *ngIf="styleProperties.inBrackets.find(element)">)</ng-container><span
-                    *ngIf="data[element.value].length > 0" [class.hidden]="(!isCommaSeparated)">,</span>
+    <ng-container *ngFor="let element of showList">
+        <ng-container *ngIf="showEmptyValues || (data[element] && data[element].length > 0)">
+            <ng-container *ngIf="showAttrNames">{{element}}: </ng-container>
+            <ng-container *ngIf="data[element]">
+                <span [ngClass]="styleProperties.emphasized.includes(element) ? 'font-italic' : ''">
+                    <ng-container *ngIf="styleProperties.inBrackets.includes(element)">(</ng-container>
+                    <ng-container *ngIf="styleProperties.titleQuotes && element === 'title'">"</ng-container>
+                    {{ data[element] }}
+                    <ng-container *ngIf="styleProperties.titleQuotes && element === 'title'">"</ng-container>
+                    <ng-container *ngIf="styleProperties.inBrackets.includes(element)">)</ng-container>
+                    <span *ngIf="data[element].length > 0" [class.hidden]="(!isCommaSeparated)">,</span>
+                </span>
             </ng-container>
         </ng-container>
     </ng-container>

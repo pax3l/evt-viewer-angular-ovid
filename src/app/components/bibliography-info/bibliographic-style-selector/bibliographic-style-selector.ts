@@ -1,5 +1,4 @@
-import { Component, Output } from '@angular/core';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map, of } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AppConfig, BibliographicStyle } from 'src/app/app.config';
 
 @Component({
@@ -7,19 +6,22 @@ import { AppConfig, BibliographicStyle } from 'src/app/app.config';
   templateUrl: './bibliographic-style-selector.component.html',
   styleUrls: ['./bibliographic-style-selector.component.scss'],
 })
-export class BibliographicStyleSelectorComponent {
+export class BibliographicStyleSelectorComponent implements OnInit {
   public bibliographicStyles = (Object.values(AppConfig.evtSettings.ui.allowedBibliographicStyles) || []).filter((el) => el.enabled);
-  private _styleID = AppConfig.evtSettings.ui.defaultBibliographicStyle;
-  selectedStyle$ = new BehaviorSubject<BibliographicStyle>(this._styleID);
+  public selectedStyleID : BibliographicStyle;
 
-  @Output() selectionChange = combineLatest([of(this.bibliographicStyles),
-    this.selectedStyle$.pipe(distinctUntilChanged()),
-  ]).pipe(
-    filter(([styles, styleID]) => !!styleID && !!styles && styles.length > 0),
-    map(([styles, styleID]) => styles.find((p) => p.id === styleID)),
-  )
+  @Output() selectionChange: EventEmitter<BibliographicStyle> = new EventEmitter<BibliographicStyle>();
+
+  ngOnInit(){
+    this.selectedStyleID = AppConfig.evtSettings.ui.defaultBibliographicStyle;
+    this.selectionChange.emit(this.selectedStyleID);
+  }
 
   stopPropagation(event: MouseEvent) {
     event.stopPropagation();
+  }
+
+  changeStyle(){
+    this.selectionChange.emit(this.selectedStyleID);
   }
 }

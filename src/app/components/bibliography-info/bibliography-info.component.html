@@ -1,21 +1,23 @@
-<evt-bibliographic-style-selector></evt-bibliographic-style-selector>
+<div>
+    <evt-bibliographic-style-selector (selectionChange)="setCurrentStyle($event)"></evt-bibliographic-style-selector>
+</div>
 <div class="evt-bibliography-content list-group">
     <ng-container *ngFor="let elem of biblList">
         <span>
             <ng-container *ngIf="elem.type && elem.type.name === 'BibliographicEntry'">
-                <evt-styled-biblio-entry [data]="elem"></evt-styled-biblio-entry>
+                <evt-styled-biblio-entry [data]="elem" [style]="currentStyle"></evt-styled-biblio-entry>
             </ng-container>
-            <!-- <ng-container *ngIf="elem.type && elem.type.name === 'BibliographicStructEntry'">
+            <ng-container *ngIf="elem.type && elem.type.name === 'BibliographicStructEntry'">
                 <ng-container *ngFor="let analythicElem of elem.analytic">
-                    <evt-styled-biblio-entry [data]="analythicElem"></evt-styled-biblio-entry>
+                    <evt-styled-biblio-entry [data]="analythicElem" [style]="currentStyle"></evt-styled-biblio-entry>
                 </ng-container>
                 <ng-container *ngFor="let monogr of elem.monogrs">
-                    <evt-styled-biblio-entry [data]="monogr"></evt-styled-biblio-entry>
+                    <evt-styled-biblio-entry [data]="monogr" [style]="currentStyle"></evt-styled-biblio-entry>
                 </ng-container>
                 <ng-container *ngFor="let serie of elem.series">
-                    <evt-styled-biblio-entry [data]="serie"></evt-styled-biblio-entry>
+                    <evt-styled-biblio-entry [data]="serie" [style]="currentStyle"></evt-styled-biblio-entry>
                 </ng-container>
-            </ng-container> -->
+            </ng-container>
         </span>
     </ng-container>
 </div>
