@@ -58,7 +58,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     editor: this.getChildrenTextByName(xml,'editor'),
                     date: this.getChildrenTextByName(xml,'date'),
                     publisher: this.getChildrenTextByName(xml,'publisher'),
-                    pubPlace: this.getChildrenTextByName(xml,'pubBlace'),
+                    pubPlace: this.getChildrenTextByName(xml,'pubPlace'),
                     citedRange: this.getChildrenTextByName(xml,'citedRange'),
                     biblScope: this.getChildrenTextAndSpecificAttribute(xml, 'biblScope', 'unit'),
                     content: parseChildren(xml, this.genericParse),
