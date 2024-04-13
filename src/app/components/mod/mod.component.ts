@@ -46,8 +46,12 @@ export class ModComponent {
 
   public selectedLayer$ = this.evtStatusService.currentChanges$.pipe(
     distinctUntilChanged(),
-    map(({ selectedLayer }) => {
+    map(({ selectedLayer, layerOrder }) => {
       this.selectedLayer = selectedLayer;
+      this.orderedLayers = layerOrder;
+      if (layerOrder.length > 0) {
+        this.selectedLayer = this.selectedLayer ?? layerOrder[layerOrder.length-1];
+      }
 
       return selectedLayer;
     } ),
@@ -78,6 +82,10 @@ export class ModComponent {
   getLayerData(data: ChangeLayerData) {
     this.orderedLayers = data?.layerOrder;
     this.selectedLayer = data?.selectedLayer;
+    if (this.orderedLayers.length > 0) {
+      // default selected layer
+      this.selectedLayer = this.selectedLayer ?? this.orderedLayers[this.orderedLayers.length-1];
+    }
   }
 
   getLayerColor() {

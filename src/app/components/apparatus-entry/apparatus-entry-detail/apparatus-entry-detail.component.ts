@@ -18,6 +18,7 @@ export class ApparatusEntryDetailComponent implements OnInit {
   rdgHasCounter = false;
 
   @Input() selectedLayer: string;
+
   public orderedLayers: string[];
 
   get significantRdg(): Reading[] {

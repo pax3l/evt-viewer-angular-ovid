@@ -1,13 +1,15 @@
 
 <!--
+    display order atm (maybe we can provide a configuration array later):
     1. lem/rdg ordered by @varSeq 
     2. mod ordered by @change 
     3. add/del/subst ordered by @seq
 -->
-
 <ng-container *ngFor="let orderedLayer of orderedLayers">
     <ng-container *ngFor="let mod of sequence">
-        <ng-container *ngIf="((showVarSeqAttr) && (mod?.varSeq))"><span class="mod-varSeq">{{mod.varSeq}} </span></ng-container>
+        <ng-container *ngIf="((showVarSeqAttr) && (mod?.varSeq))">
+            <span class="mod-varSeq">{{mod.varSeq}} </span>
+        </ng-container>
 
         <ng-container *ngIf="mod.changeLayer?.replace('#','') === orderedLayer">
             <span class="mod-layer">{{orderedLayer}}: </span>

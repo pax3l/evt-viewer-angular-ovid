@@ -28,7 +28,7 @@ export class ModDetailComponent {
   @Input() set selectedLayer(layer: string) {
     this.selLayer = layer;
   }
-  get selectedLayers() { return this.ordLayers; }
+  get selectedLayer() { return this.selLayer; }
 
   @Input() set mod(el: Mod) {
     this.modEntry = el;

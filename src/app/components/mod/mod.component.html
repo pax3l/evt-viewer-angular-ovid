@@ -22,7 +22,7 @@
             [editionLevel]="editionLevel" 
             [itemsToHighlight]="itemsToHighlight"
             [textFlow]="textFlow"
-            [selectedLayer]="selectedLayer"
+            [selectedLayer]="selectedLayer$ | async"
             [withDeletions]="withDeletions">
         </evt-content-viewer>
     </ng-container>
@@ -32,8 +32,8 @@
     [editionLevel]="editionLevel" 
     [evtHtmlAttributes]="data?.attributes"
     [mod]="data"
+    [selectedLayer]="selectedLayer$ | async"
     [orderedLayers]="orderedLayers"
-    [selectedLayer]="selectedLayer"
     (hide)="toggleOpened$.next()"
     (click)="stopPropagation($event)">
 </evt-mod-detail>

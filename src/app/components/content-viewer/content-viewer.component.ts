@@ -62,13 +62,13 @@ export class ContentViewerComponent implements OnDestroy {
   get withDeletions() { return this.withDels; }
   withDeletionsChange = new BehaviorSubject<boolean>(true);
 
-  private selLayer: boolean;
-  @Input() set selectedLayer(d: boolean) {
+  private selLayer: string;
+  @Input() set selectedLayer(d: string) {
     this.selLayer = d;
     this.selectedLayerChange.next(d);
   }
   get selectedLayer() { return this.selLayer; }
-  selectedLayerChange = new BehaviorSubject<boolean>(true);
+  selectedLayerChange = new BehaviorSubject<string>(undefined);
 
   constructor(
     private componentRegister: ComponentRegisterService,
