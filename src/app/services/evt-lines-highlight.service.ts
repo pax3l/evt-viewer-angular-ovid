@@ -129,7 +129,9 @@ export class EvtLinesHighlightService {
           pc.class= pc.class + ' highlightverse';
         }
       } else {
-        pc.class = pc.class.replace(/(highlightverse)(\s)?(selected)?/,'');
+        if (pc.class) {
+          pc.class = pc.class.replace(/(highlightverse)(\s)?(selected)?/,'');
+        }
       }
     }
 
