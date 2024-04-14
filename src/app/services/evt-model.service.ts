@@ -7,7 +7,7 @@ import {
   NamedEntities,
   NamedEntityOccurrence,
   OriginalEncodingNodeType,
-  Page, 
+  Page,
   XMLImagesValues,
   ZoneHotSpot,
   ZoneLine,
