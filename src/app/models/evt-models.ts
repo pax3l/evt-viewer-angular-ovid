@@ -210,6 +210,8 @@ export class BibliographicEntry extends GenericElement {
     }>;
     editor: string[];
     title: string[];
+    articleTitle: string;
+    edition: string;
     date: string[];
     publisher: string[];
     pubPlace: string[];

@@ -42,6 +42,17 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return null;
     }
 
+    protected getTitle(element: XMLElement): string {
+        const titles = this.getChildrenTextByName(element, 'title');
+        let title = '';
+        if(titles.length > 0){
+            title = titles.shift();
+            titles.forEach((el) => { title = title.replace(el, `"${el}"`); });
+        }
+
+        return title;
+    }
+
     protected getAuthorsDetails(element: XMLElement){
         const authors = Array.from(element.querySelectorAll('author'));
 
@@ -73,7 +84,9 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     id: getID(xml),
                     class: BibliographyClass,
                     attributes: this.attributeParser.parse(xml),
-                    title: this.getChildrenTextByName(xml,'title'),
+                    title: this.getChildrenTextByName(xml, 'title'),
+                    articleTitle: this.getTitle(xml),
+                    edition: this.getTitle(xml),
                     author: this.getChildrenTextByName(xml,'author'),
                     authorsDetails: this.getAuthorsDetails(xml),
                     editor: this.getChildrenTextByName(xml,'editor'),
