@@ -13,12 +13,12 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
     protected attributeParser = createParser(AttributeParser, this.genericParse);
     protected elementParser = createParser(GenericElemParser, parse);
 
-    protected getTrimmedText = function(s) {
+    protected getTrimmedText = function(s): string {
         return s.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
     }
 
-    protected getChildrenTextByName = function(xml : XMLElement, name : string) {
-        return Array.from(xml.querySelectorAll<XMLElement>(name)).map((x) => ' '+this.getTrimmedText(x));
+    protected getChildrenTextByName = function(xml : XMLElement, name : string): string[] {
+        return Array.from(xml.querySelectorAll<XMLElement>(name)).map((x) => this.getTrimmedText(x));
     }
 
     protected getChildrenByNameOnFirstLevelOnly = function(xml : XMLElement, name : string) {

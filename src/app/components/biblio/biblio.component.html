@@ -3,7 +3,7 @@
         <ng-container *ngIf="showEmptyValues || (data[element.value] && data[element.value].length > 0)">
             <ng-container *ngIf="showAttrNames">{{element.value}}: </ng-container>
                 <ng-container *ngIf="data[element.value]">
-                   {{ data[element.value] }} <span *ngIf="data[element.value].length > 0" [class.hidden]="(!isCommaSeparated)">,</span> 
+                   {{ data[element.value] }} <span *ngIf="data[element.value].length > 0" [class.hidden]="(!isCommaSeparated)">,</span>&nbsp; 
                 </ng-container>
             <br *ngIf="!inline && data[element.value].length > 0">
         </ng-container>
