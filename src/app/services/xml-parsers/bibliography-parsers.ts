@@ -53,6 +53,34 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return title;
     }
 
+    protected getCitingText(element: XMLElement, includeUnit: boolean){
+        const from = element.getAttribute('from');
+        const to = element.getAttribute('to');
+        const unit = element.getAttribute('unit');
+        let returnString = '';
+        if(unit && includeUnit){
+            returnString = unit + ' ';
+        }
+
+        if(element.textContent === '' && !element.hasChildNodes()){
+            if(from){
+                if(from === to){
+                    returnString += from;
+                }else{
+                    returnString += to ? `${from}-${to}` : `${from}ff`;
+                }
+            }
+        }else{
+            returnString += this.getTrimmedText(element);
+        }
+
+        return returnString;
+    }
+
+    protected getCitingTags(element: XMLElement, name: string): string[] {
+        return Array.from(element.querySelectorAll(name)).map((el: XMLElement) => this.getCitingText(el, true));
+    }
+
     protected getAuthorsDetails(element: XMLElement){
         const authors = Array.from(element.querySelectorAll('author'));
 
@@ -93,8 +121,8 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     date: this.getChildrenTextByName(xml,'date'),
                     publisher: this.getChildrenTextByName(xml,'publisher'),
                     pubPlace: this.getChildrenTextByName(xml,'pubPlace'),
-                    citedRange: this.getChildrenTextByName(xml,'citedRange'),
-                    biblScope: this.getChildrenTextAndSpecificAttribute(xml, 'biblScope', 'unit'),
+                    citedRange: this.getCitingTags(xml, 'citedRange'),
+                    biblScope: this.getCitingTags(xml, 'biblScope'),
                     content: parseChildren(xml, this.genericParse),
                     text: xml.textContent,
                     quotedText: this.getQuoteElementText(xml),
