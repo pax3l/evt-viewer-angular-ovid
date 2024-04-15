@@ -201,6 +201,13 @@ export class BibliographicList extends GenericElement {
 export class BibliographicEntry extends GenericElement {
     id: string;
     author: string[];
+    authorsDetails: Array<{
+        fullName: string,
+        forename: string,
+        forenameInitials: string,
+        surname: string,
+        nameLink: string,
+    }>;
     editor: string[];
     title: string[];
     date: string[];

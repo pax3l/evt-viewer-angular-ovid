@@ -42,6 +42,23 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return null;
     }
 
+    protected getAuthorsDetails(element: XMLElement){
+        const authors = Array.from(element.querySelectorAll('author'));
+
+        return authors.map((el) => {
+            const forename = this.getChildrenTextByName(el as XMLElement, 'forename').reduce((prev, f) => prev + prev ? ' ' : '' + f, '');
+            const forenameInitials = forename.replace(/\B(\w+)/, '.');
+
+            return {
+            fullName: this.getTrimmedText(el),
+            forename,
+            forenameInitials,
+            surname: this.getChildrenTextByName(el as XMLElement, 'surname').reduce((prev, s) => prev + prev ? ' ' : '' + s, ''),
+            nameLink: this.getChildrenTextByName(el as XMLElement, 'nameLink'),
+            }
+        });
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     parse(xml: XMLElement): any {
 
@@ -58,6 +75,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     attributes: this.attributeParser.parse(xml),
                     title: this.getChildrenTextByName(xml,'title'),
                     author: this.getChildrenTextByName(xml,'author'),
+                    authorsDetails: this.getAuthorsDetails(xml),
                     editor: this.getChildrenTextByName(xml,'editor'),
                     date: this.getChildrenTextByName(xml,'date'),
                     publisher: this.getChildrenTextByName(xml,'publisher'),
