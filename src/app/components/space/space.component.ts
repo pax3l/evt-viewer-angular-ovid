@@ -28,6 +28,6 @@ export class SpaceComponent implements ISpaceComponent {
     return Array(parseInt( this.data.attributes.quantity)).keys();
   }
   constructor() {
-    console.log('this is a space');
+    //console.log('this is a space');
   }
 }

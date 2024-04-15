@@ -154,7 +154,7 @@ export class SurfaceGrpParser extends EmptyParser implements Parser<XMLElement> 
 
     surfaceParser = createParser(SurfaceParser, this.genericParse);
     public parse(xml: XMLElement): SurfaceGrp {
-        console.log('surgface grp');
+        //console.log('surgface grp');
 
         const surfaces = Array.from(xml.querySelectorAll<XMLElement>('surface')).map((s) => this.surfaceParser.parse(s));
 

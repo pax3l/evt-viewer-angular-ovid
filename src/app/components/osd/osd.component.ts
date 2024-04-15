@@ -192,7 +192,7 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
           this.viewer.destroy();
           this.viewer = undefined;
         }
-        console.log('init');
+        //console.log('init');
 
         if (!!tileSources) {
           //TODO: check this, for test only
@@ -211,7 +211,7 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
 
               } as OsdTileSource));
 
-           console.log('tiles:', tiles);
+           //console.log('tiles:', tiles);
               this.viewer = OpenSeadragon({
                 ...commonOptions,
                 ...this.options,
