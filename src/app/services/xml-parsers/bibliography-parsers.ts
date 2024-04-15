@@ -26,7 +26,10 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
     }
 
     protected getChildrenTextAndSpecificAttribute = function(xml: XMLElement, name: string, attribute: string) {
-        return Array.from(xml.querySelectorAll<XMLElement>(name)).map((x) => x.getAttribute(attribute)+' '+this.getTrimmedText(x));
+        return Array.from(xml.querySelectorAll<XMLElement>(name)).map((x) =>
+        x.getAttribute(attribute) !== null ?
+        x.getAttribute(attribute)+' '+this.getTrimmedText(x) :
+        this.getTrimmedText(x));
     }
 
     protected getQuoteElementText(element: XMLElement): string {
