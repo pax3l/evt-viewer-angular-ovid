@@ -6,8 +6,7 @@ import { register } from 'src/app/services/component-register.service';
 import { EditionlevelSusceptible, Highlightable, ShowDeletionsSusceptible, TextFlowSusceptible } from '../components-mixins';
 import { distinctUntilChanged, map, scan, startWith, Subject } from 'rxjs';
 import { EVTStatusService } from 'src/app/services/evt-status.service';
-import { AppConfig } from 'src/app/app.config';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { AppConfig, EditionLevelType } from 'src/app/app.config';
 
 export interface ModComponent extends EditionlevelSusceptible, Highlightable, TextFlowSusceptible, ShowDeletionsSusceptible { }
 
@@ -15,7 +14,6 @@ export interface ModComponent extends EditionlevelSusceptible, Highlightable, Te
   selector: 'evt-mod',
   templateUrl: './mod.component.html',
   styleUrls: ['./mod.component.scss'],
-  changeDetection: ChangeDetectionStrategy.Default,
 })
 
 @register(Mod)
@@ -23,9 +21,9 @@ export class ModComponent {
 
   @Input() data: Mod;
 
-  @Input() editionLevel;
+  @Input() editionLevel: EditionLevelType;
 
-  @Input() withDeletions;
+  @Input() withDeletions: boolean;
 
   public alwaysShow: boolean;
 
@@ -57,9 +55,6 @@ export class ModComponent {
     } ),
   );
 
-
-  public opened = false;
-
   public isHidden = this.layerHidden;
 
   public changeLayerColor = this.getLayerColor;
@@ -88,7 +83,7 @@ export class ModComponent {
     }
   }
 
-  getLayerColor() {
+  getLayerColor(): string {
     const layerColors = AppConfig.evtSettings.edition.changeSequenceView.layerColors;
     if ((this.data?.changeLayer) && (layerColors[this.data.changeLayer.replace('#','')])) {
       return layerColors[this.data.changeLayer.replace('#','')];
@@ -97,7 +92,7 @@ export class ModComponent {
     return null;
   }
 
-  getLayerIndex(layer): number {
+  getLayerIndex(layer: string): number {
     if (layer) {
       layer = layer.replace('#','');
 

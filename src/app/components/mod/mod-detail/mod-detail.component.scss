@@ -5,7 +5,6 @@
     padding: 0 0.3em 0 0;
     display: inline;
     font-family: "evt-icons" !important;
-    speak: none;
     font-style: normal;
     font-feature-settings: normal;
     font-variant: normal;
@@ -14,4 +13,6 @@
     vertical-align: super;
     filter: saturate(0);
     margin-top: 0.2em;
+    pointer-events: all; 
+    cursor:pointer;
 }

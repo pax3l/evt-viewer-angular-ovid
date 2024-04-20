@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ApparatusEntry, ChangeLayerData, GenericElement, Reading } from '../../../models/evt-models';
 import { register } from '../../../services/component-register.service';
 import { EVTModelService } from '../../../services/evt-model.service';
@@ -12,7 +12,10 @@ import { EVTStatusService } from 'src/app/services/evt-status.service';
 })
 
 @register(ApparatusEntryDetailComponent)
-export class ApparatusEntryDetailComponent implements OnInit {
+export class ApparatusEntryDetailComponent implements OnInit, OnDestroy {
+
+  private subscriptions;
+
   @Input() data: ApparatusEntry;
   nestedApps: ApparatusEntry[] = [];
   rdgHasCounter = false;
@@ -43,7 +46,6 @@ export class ApparatusEntryDetailComponent implements OnInit {
 
   getLayerData(changeData: ChangeLayerData) {
     this.orderedLayers = changeData?.layerOrder;
-    //this.selectedLayer = changeData?.selectedLayer;
   }
 
   constructor(
@@ -56,7 +58,11 @@ export class ApparatusEntryDetailComponent implements OnInit {
     if (this.data.nestedAppsIDs.length > 0) {
       this.recoverNestedApps(this.data);
     }
-    this.evtStatusService.currentChanges$.pipe(distinctUntilChanged()).subscribe(({ next: (data) => this.getLayerData(data) }));
+    this.subscriptions = this.evtStatusService.currentChanges$.pipe(distinctUntilChanged()).subscribe(({ next: (data) => this.getLayerData(data) }));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   recoverNestedApps(app: ApparatusEntry) {

@@ -27,7 +27,7 @@ export class TextPanelComponent {
     return this._mc;
   }
 
-  public selLayer;
+  public selLayer: string;
   @Input() set selectedLayer(layer: string) {
     this.selLayer = layer;
     this.evtStatus.updateLayer$.next(layer);
@@ -158,7 +158,7 @@ export class TextPanelComponent {
     return this._dl;
   }
 
-  public deletionsText = 'showsDeletions';
+  public deletionsText: 'hidesDeletions' | 'showsDeletions' = 'showsDeletions';
 
   public get proseVersesTogglerIcon(): EvtIconInfo {
 

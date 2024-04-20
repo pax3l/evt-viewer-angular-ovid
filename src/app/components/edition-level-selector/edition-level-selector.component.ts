@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, OnDestroy, Output } from '@angular/core';
 import { BehaviorSubject, combineLatest, of } from 'rxjs';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { AppConfig, EditionLevel, EditionLevelType } from '../../app.config';
@@ -10,13 +10,14 @@ import { EVTStatusService } from 'src/app/services/evt-status.service';
   templateUrl: './edition-level-selector.component.html',
   styleUrls: ['./edition-level-selector.component.scss'],
 })
-export class EditionLevelSelectorComponent {
+export class EditionLevelSelectorComponent implements OnDestroy {
+  private subscriptions;
   public editionLevels = (AppConfig.evtSettings.edition.availableEditionLevels || []).filter((el) => el.enable);
   public selectableEditionLevels: EditionLevel[] = this.editionLevels.filter((el) => !el.hidden);
 
   private _edLevelID: EditionLevelType;
   @Input() set editionLevelID(p: EditionLevelType) {
-    this.evtStatusService.currentViewMode$.pipe().subscribe((view) => {
+    this.subscriptions = this.evtStatusService.currentViewMode$.pipe().subscribe((view) => {
       if (view !== undefined && (view.id === 'documentalMixed')) {
         // documental mixed only allows changesView
         this._edLevelID = 'changesView';
@@ -54,6 +55,10 @@ export class EditionLevelSelectorComponent {
 
   stopPropagation(event: MouseEvent) {
     event.stopPropagation();
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 
   constructor(

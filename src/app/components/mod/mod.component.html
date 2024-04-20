@@ -14,7 +14,7 @@
         </span>
     </ng-container>
 
-    <ng-container *ngFor="let element of data.content; index as i">
+    <ng-container *ngFor="let element of data.content">
         <evt-content-viewer *ngIf="!elementsToExcludeInTextFlow.includes(element?.type)"
             [hidden]="(isHidden(element) && !(alwaysShow))" 
             [ngClass]="{'mod-reading': (data.insideApp[0] === false)}" 

@@ -1,17 +1,18 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { EvtIconInfo } from '../../ui-components/icon/icon.component';
 import { EVTStatusService } from 'src/app/services/evt-status.service';
 import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map } from 'rxjs';
 import { AppConfig } from 'src/app/app.config';
+import { ChangeLayerData } from 'src/app/models/evt-models';
 
 @Component({
   selector: 'evt-change-layer-selector',
   templateUrl: './change-layer-selector.component.html',
   styleUrls: ['./change-layer-selector.component.scss'],
 })
-export class ChangeLayerSelectorComponent implements OnInit {
+export class ChangeLayerSelectorComponent implements OnDestroy, OnInit {
 
-  public changeLayers;
+  public changeLayers: string[];
 
   public selectedLayer: string;
 
@@ -35,7 +36,8 @@ export class ChangeLayerSelectorComponent implements OnInit {
     map(([selectedLayer]) => selectedLayer),
   );
 
-  getLayerData(data) {
+  getLayerData(data: ChangeLayerData) {
+    // eslint-disable-next-line prefer-const
     let layerItems = [];
     this.changeLayers = data?.layerOrder;
     data?.layerOrder.forEach((layer) => layerItems.push({ id: layer, value: layer }));
@@ -43,8 +45,8 @@ export class ChangeLayerSelectorComponent implements OnInit {
     this.selLayer = data?.selectedLayer;
   }
 
-  getLayerColor(layer) {
-    const layerColors = AppConfig.evtSettings.edition.changeSequenceView.layerColors;
+  getLayerColor(layer: string): string {
+    const layerColors: string[] = AppConfig.evtSettings.edition.changeSequenceView.layerColors;
     if ((layer !== undefined) && (layerColors[layer.replace('#','')])) {
       return layerColors[layer.replace('#','')];
     }
@@ -58,6 +60,10 @@ export class ChangeLayerSelectorComponent implements OnInit {
 
   ngOnInit() {
     this.evtStatusService.currentChanges$.pipe(distinctUntilChanged()).subscribe(({ next: (data) => this.getLayerData(data) }));
+  }
+
+  ngOnDestroy() {
+    this.selectedLayer$.unsubscribe();
   }
 
 }
