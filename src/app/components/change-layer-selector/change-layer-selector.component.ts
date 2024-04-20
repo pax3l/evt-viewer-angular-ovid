@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { EvtIconInfo } from '../../ui-components/icon/icon.component';
 import { EVTStatusService } from 'src/app/services/evt-status.service';
-import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map } from 'rxjs';
+import { BehaviorSubject, combineLatest, distinctUntilChanged, filter, map, Subscription } from 'rxjs';
 import { AppConfig } from 'src/app/app.config';
 import { ChangeLayerData } from 'src/app/models/evt-models';
 
@@ -11,6 +11,8 @@ import { ChangeLayerData } from 'src/app/models/evt-models';
   styleUrls: ['./change-layer-selector.component.scss'],
 })
 export class ChangeLayerSelectorComponent implements OnDestroy, OnInit {
+
+  private subscription: Subscription;
 
   public changeLayers: string[];
 
@@ -59,11 +61,12 @@ export class ChangeLayerSelectorComponent implements OnDestroy, OnInit {
   ) {}
 
   ngOnInit() {
-    this.evtStatusService.currentChanges$.pipe(distinctUntilChanged()).subscribe(({ next: (data) => this.getLayerData(data) }));
+    this.subscription = this.evtStatusService.currentChanges$.pipe(distinctUntilChanged()).subscribe(({ next: (data) => this.getLayerData(data) }));
   }
 
   ngOnDestroy() {
     this.selectedLayer$.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
 }

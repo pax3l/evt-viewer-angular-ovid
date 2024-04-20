@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, Output } from '@angular/core';
-import { BehaviorSubject, combineLatest, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, of, Subscription } from 'rxjs';
 import { distinctUntilChanged, filter, map } from 'rxjs/operators';
 import { AppConfig, EditionLevel, EditionLevelType } from '../../app.config';
 import { EvtIconInfo } from '../../ui-components/icon/icon.component';
@@ -11,7 +11,7 @@ import { EVTStatusService } from 'src/app/services/evt-status.service';
   styleUrls: ['./edition-level-selector.component.scss'],
 })
 export class EditionLevelSelectorComponent implements OnDestroy {
-  private subscriptions;
+  private subscriptions: Subscription;
   public editionLevels = (AppConfig.evtSettings.edition.availableEditionLevels || []).filter((el) => el.enable);
   public selectableEditionLevels: EditionLevel[] = this.editionLevels.filter((el) => !el.hidden);
 
