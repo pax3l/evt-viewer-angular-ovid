@@ -81,21 +81,42 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return Array.from(element.querySelectorAll(name)).map((el: XMLElement) => this.getCitingText(el, true));
     }
 
+
+    /**
+     *
+     * @param element the parent XML element where to search the bibliographic reference scope
+     * @param pattern a substring to search in \@unit, as it does not have a standard value.
+     * For example, to get a volume number the best approach would be to search for the "vol" substring.
+     * @returns the text representation of the bibliographic scope, along with the unit name.
+     */
+    protected getBibliographicReferenceByUnitMatching(element: XMLElement, pattern: string): string{
+        const biblScopeElement = element.querySelector<XMLElement>('biblScope[unit*="' + pattern + '"]')
+        const citedRangeElement = element.querySelector<XMLElement>('citedRange[unit*="' + pattern + '"');
+        if(biblScopeElement || citedRangeElement){
+            return biblScopeElement ? this.getCitingText(biblScopeElement, false) : this.getCitingText(citedRangeElement, false);
+        }
+
+        return '';
+    }
+
     protected getAuthorsDetails(element: XMLElement){
         const authors = Array.from(element.querySelectorAll('author'));
 
         return authors.map((el) => {
             const forename = this.getChildrenTextByName(el as XMLElement, 'forename').reduce((prev, f) => prev + prev ? ' ' : '' + f, '');
-            const forenameInitials = forename.replace(/\B(\w+)/, '.');
 
             return {
             fullName: this.getTrimmedText(el),
             forename,
-            forenameInitials,
+            forenameInitials: forename.replace(/\B(\w+)/, '.'),
             surname: this.getChildrenTextByName(el as XMLElement, 'surname').reduce((prev, s) => prev + prev ? ' ' : '' + s, ''),
             nameLink: this.getChildrenTextByName(el as XMLElement, 'nameLink'),
             }
         });
+    }
+
+    protected getIdnoTextByType(element: XMLElement, type: string){
+        return element.querySelector<XMLElement>('idno[type="' + type + '" i]');
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -115,6 +136,8 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     title: this.getChildrenTextByName(xml, 'title'),
                     articleTitle: this.getTitle(xml),
                     edition: this.getTitle(xml),
+                    idno: this.getChildrenTextByName(xml, 'idno'),
+                    doi: this.getIdnoTextByType(xml, 'DOI'),
                     author: this.getChildrenTextByName(xml,'author'),
                     authorsDetails: this.getAuthorsDetails(xml),
                     editor: this.getChildrenTextByName(xml,'editor'),
@@ -123,6 +146,9 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     pubPlace: this.getChildrenTextByName(xml,'pubPlace'),
                     citedRange: this.getCitingTags(xml, 'citedRange'),
                     biblScope: this.getCitingTags(xml, 'biblScope'),
+                    pageNumber: this.getBibliographicReferenceByUnitMatching(xml, 'page'),
+                    volumeNumber: this.getBibliographicReferenceByUnitMatching(xml, 'vol'),
+                    issueNumber: this.getBibliographicReferenceByUnitMatching(xml, 'iss'),
                     content: parseChildren(xml, this.genericParse),
                     text: xml.textContent,
                     quotedText: this.getQuoteElementText(xml),

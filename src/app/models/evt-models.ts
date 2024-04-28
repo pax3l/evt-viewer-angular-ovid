@@ -212,10 +212,15 @@ export class BibliographicEntry extends GenericElement {
     title: string[];
     articleTitle: string;
     edition: string;
+    idno: string[];
+    doi: string;
     date: string[];
     publisher: string[];
     pubPlace: string[];
     citedRange: string[];
+    pageNumber: string;
+    volumeNumber: string;
+    issueNumber: string;
     biblScope: string[];
     text: string;
     quotedText: string;
