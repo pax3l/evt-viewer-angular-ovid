@@ -108,7 +108,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
             return {
             fullName: this.getTrimmedText(el),
             forename,
-            forenameInitials: forename.replace(/\B(\w+)/, '.'),
+            forenameInitials: forename.replace(/\B(\w+)/g, '.'),
             surname: this.getChildrenTextByName(el as XMLElement, 'surname').reduce((prev, s) => prev + prev ? ' ' : '' + s, ''),
             nameLink: this.getChildrenTextByName(el as XMLElement, 'nameLink'),
             }
@@ -116,7 +116,14 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
     }
 
     protected getIdnoTextByType(element: XMLElement, type: string){
-        return element.querySelector<XMLElement>('idno[type="' + type + '" i]');
+        const idno = element.querySelector<XMLElement>('idno[type="' + type + '" i]');
+
+        return idno ? this.getTrimmedText(idno) : null;
+    }
+
+    protected getDate(xml: XMLElement){
+        return Array.from(xml.querySelectorAll('date'))
+            .map((x) => x.getAttribute('when') && !x.textContent ? x.getAttribute('when') : this.getTrimmedText(x));
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -141,7 +148,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
                     author: this.getChildrenTextByName(xml,'author'),
                     authorsDetails: this.getAuthorsDetails(xml),
                     editor: this.getChildrenTextByName(xml,'editor'),
-                    date: this.getChildrenTextByName(xml,'date'),
+                    date: this.getDate(xml),
                     publisher: this.getChildrenTextByName(xml,'publisher'),
                     pubPlace: this.getChildrenTextByName(xml,'pubPlace'),
                     citedRange: this.getCitingTags(xml, 'citedRange'),
