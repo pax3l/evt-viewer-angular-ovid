@@ -98,17 +98,34 @@ export interface UiConfig {
             id: string;
 			label: string;
 			enabled: boolean;
-            propsOrder: string[];
-            properties: {
-                titleQuotes: boolean,
-                emphasized: string[],
-                inBrackets: string[]
-            }
-		}
-	}
+            propsOrder: BibliographicProperties[];
+            properties: BibliographicStyle;
+	    }
+    };
     theme: 'neutral' | 'modern' | 'classic';
     syncZonesHighlightButton: boolean;
 }
+export type CitingRanges = 'issue' | 'volume' | 'page';
+export type BibliographicProperties = 'author'| 'date'| 'title'| 'editor' | 'publication' | 'pubPlace' | 'publisher' | 'doi';
+export type BibliographicStyle = Partial<{
+    propsDelimiter: string;
+    authorStyle: Partial<{
+        forenameInitials: boolean;
+        delimiter: string;
+        lastDelimiter: string;
+        order: Array<'forename' | 'surname'>;
+        maxAuthors: string;
+    }>;
+    publicationStyle: Partial<{
+        citingAcronym: 'all' | 'none' | CitingRanges[];
+        includeEditor: boolean;
+        inBrackets: CitingRanges[];
+    }>;
+    dateInsidePublication: boolean
+    titleQuotes: boolean;
+    emphasized: BibliographicProperties[];
+    inBrackets: BibliographicProperties[];
+}>;
 
 export interface EditionConfig {
     editionTitle: string;

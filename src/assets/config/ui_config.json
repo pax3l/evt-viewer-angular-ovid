@@ -81,60 +81,75 @@
 	"allowedBibliographicStyles": {
 		"chicago": {
 			"id": "chicago",
-			"label": "Chicago",
+			"label": "Chicago (Author-Date)",
 			"enabled": true,
 			"propsOrder": [
 				"author",
 				"date",
 				"title",
-				"publisher",
-				"citedRange",
-				"biblScope",
+				"editor",
+				"publication",
 				"pubPlace",
-				"editor"
+				"publisher",
+				"doi"
 			],
 			"properties": {
 				"titleQuotes": true,
-				"empashized": [
-					"publisher"
-				],
-				"inBrackets": [
-					"citedRange"
-				]
+				"emphasized": [ "publisher" ]
 			}
 		},
 		"apa": {
 			"id": "apa",
 			"label": "APA",
-			"enabled": false,
+			"enabled": true,
 			"propsOrder": [
 				"author",
 				"date",
 				"title",
+				"publication",
 				"publisher",
-				"citedRange",
-				"biblScope",
-				"pubPlace",
-				"editor"
+				"doi"
 			],
 			"properties": {
+				"authorStyle": {
+					"delimiter": ",",
+					"forenameInitials": true,
+					"maxAuthors": 3
+				},
+				"publicationStyle": {
+					"citingAcronym": "none",
+					"inBrackets": [ "issue" ]
+				},
+				"propsDelimiter": ".",
 				"titleQuotes": false,
-				"empashized": [],
-				"inBrackets": [
-					"date"
-				]
+				"emphasized": [ "publication" ],
+				"inBrackets": [ "date" ]
 			}
 		},
 		"mla": {
 			"id": "mla",
 			"label": "MLA",
 			"enabled": true,
+			"propsOrder": [
+				"author",
+				"title",
+				"publication",
+				"publisher",
+				"doi"
+			],
 			"properties": {
+				"propsDelimiter": ".",
+				"authorStyle": {
+					"delimiter": ","
+				},
+				"publicationStyle": {
+					"citingAcronym": "all",
+					"inBrackets": [ "issue" ],
+					"includeEditor": true
+				},
+				"dateInsidePublication": true,
 				"titleQuotes": false,
-				"empashized": [
-					"publisher"
-				],
-				"inBrackets": []
+				"emphasized": [ "publication" ]
 			}
 		}
 	}
