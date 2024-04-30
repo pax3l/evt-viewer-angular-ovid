@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { AppConfig, BibliographicStyle } from 'src/app/app.config';
+import { AppConfig } from 'src/app/app.config';
 import { BibliographicEntry } from 'src/app/models/evt-models';
 
 @Component({
@@ -9,7 +9,7 @@ import { BibliographicEntry } from 'src/app/models/evt-models';
 })
 export class StyledBiblioEntryComponent implements OnChanges{
   @Input() data: BibliographicEntry;
-  @Input() style: BibliographicStyle = AppConfig.evtSettings.ui.defaultBibliographicStyle;
+  @Input() style: string = AppConfig.evtSettings.ui.defaultBibliographicStyle;
 
   public showList;
   public showAttrNames = AppConfig.evtSettings.edition.biblView.showAttrNames;

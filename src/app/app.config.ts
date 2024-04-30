@@ -92,13 +92,13 @@ export interface UiConfig {
     initNavBarOpened: boolean;
     thumbnailsButton: boolean;
     viscollButton: boolean;
-    defaultBibliographicStyle: BibliographicStyle,
+    defaultBibliographicStyle: string;
 	allowedBibliographicStyles: {
 		[key: string]: {
-            id: BibliographicStyle,
-			label: string,
-			enabled: boolean,
-            propsOrder: string[],
+            id: string;
+			label: string;
+			enabled: boolean;
+            propsOrder: string[];
             properties: {
                 titleQuotes: boolean,
                 emphasized: string[],
@@ -109,7 +109,6 @@ export interface UiConfig {
     theme: 'neutral' | 'modern' | 'classic';
     syncZonesHighlightButton: boolean;
 }
-export type BibliographicStyle = 'chicago' | 'apa' | 'mla'
 
 export interface EditionConfig {
     editionTitle: string;

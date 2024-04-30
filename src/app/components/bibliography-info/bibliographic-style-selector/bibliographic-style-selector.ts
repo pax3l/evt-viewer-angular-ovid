@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { AppConfig, BibliographicStyle } from 'src/app/app.config';
+import { AppConfig } from 'src/app/app.config';
 
 @Component({
   selector: 'evt-bibliographic-style-selector',
@@ -8,9 +8,9 @@ import { AppConfig, BibliographicStyle } from 'src/app/app.config';
 })
 export class BibliographicStyleSelectorComponent implements OnInit {
   public bibliographicStyles = (Object.values(AppConfig.evtSettings.ui.allowedBibliographicStyles) || []).filter((el) => el.enabled);
-  public selectedStyleID : BibliographicStyle;
+  public selectedStyleID : string;
 
-  @Output() selectionChange: EventEmitter<BibliographicStyle> = new EventEmitter<BibliographicStyle>();
+  @Output() selectionChange: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(){
     this.selectedStyleID = AppConfig.evtSettings.ui.defaultBibliographicStyle;
