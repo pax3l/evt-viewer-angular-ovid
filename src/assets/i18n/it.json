@@ -192,5 +192,7 @@
   "year": "Anno",
   "order": "Ordine",
   "asc": "Crescente",
-  "desc": "Decrescente"
+  "desc": "Decrescente",
+  "reprintedIn": "Rist. in",
+  "editedBy": "A cura di"
 }

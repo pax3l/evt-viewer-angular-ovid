@@ -193,5 +193,7 @@
     "year": "Year",
     "order": "Order",
     "asc": "Ascendent",
-    "desc": "Descendent"
+    "desc": "Descendent",
+    "reprintedIn": "Repr. in",
+    "editedBy": "Edited by"
 }
