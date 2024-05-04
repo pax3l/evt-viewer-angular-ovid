@@ -11,8 +11,7 @@ import { EditionLevelType } from 'src/app/app.config';
 })
 export class ModDetailComponent {
 
-  private edLevel: EditionLevelType;
-  public modEntry: Mod;
+  private modEntry: Mod;
   public boxVisible: boolean;
 
   public ordLayers: string[];
@@ -37,10 +36,9 @@ export class ModDetailComponent {
   get mod() { return this.modEntry; }
 
   @Input() set editionLevel(el: EditionLevelType) {
-    this.edLevel = el;
     this.editionLevelChange.next(el);
   }
-  get editionLevel() { return this.edLevel; }
+
   editionLevelChange = new BehaviorSubject<EditionLevelType | ''>('');
 
   stopPropagation(e: MouseEvent) {

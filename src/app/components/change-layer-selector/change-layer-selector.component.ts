@@ -14,15 +14,11 @@ export class ChangeLayerSelectorComponent implements OnDestroy, OnInit {
 
   private subscription: Subscription;
 
-  public changeLayers: string[];
-
-  public selectedLayer: string;
+  public changeLayers: Array<{id: string; value: string}>;
 
   @Input() set selLayer(l: string) {
-    this.selectedLayer = l;
     this.selectedLayer$.next(l)
   }
-  get editionLevelID() { return this.selectedLayer; }
 
   icon: EvtIconInfo = {
     icon: 'clock',
@@ -41,7 +37,6 @@ export class ChangeLayerSelectorComponent implements OnDestroy, OnInit {
   getLayerData(data: ChangeLayerData) {
     // eslint-disable-next-line prefer-const
     let layerItems = [];
-    this.changeLayers = data?.layerOrder;
     data?.layerOrder.forEach((layer) => layerItems.push({ id: layer, value: layer }));
     this.changeLayers = layerItems;
     this.selLayer = data?.selectedLayer;

@@ -1,5 +1,10 @@
 <ng-container *ngFor="let orderedReading of orderedReadings; let i = index">
-    <evt-reading class="app-entry-rdg" [ngClass]="{'first-mod': (i === 0)}" [data]="orderedReading" [editionLevel]="editionLevel" [withDeletions]="withDeletions" [selectedLayer]="selectedLayer" (click)="toggleModGroupEntryBox()">
+    <evt-reading class="app-entry-rdg" [ngClass]="{'first-mod': (i === 0)}" 
+        [data]="orderedReading" 
+        [editionLevel]="editionLevelChange.asObservable() | async" 
+        [withDeletions]="withDeletions" 
+        [selectedLayer]="selectedLayer" 
+        (click)="toggleModGroupEntryBox()">
     </evt-reading>
 </ng-container>
 

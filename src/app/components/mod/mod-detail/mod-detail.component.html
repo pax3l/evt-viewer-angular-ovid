@@ -6,7 +6,7 @@
             <ng-container *ngFor="let element of mod.content; index as i">
                 <evt-content-viewer 
                     [content]="element" 
-                    [editionLevel]="editionLevel"
+                    [editionLevel]="editionLevelChange.asObservable() | async"
                     [evtHtmlAttributes]="element?.attributes" 
                     [attr.data-edition]="editionLevel">
                 </evt-content-viewer> 

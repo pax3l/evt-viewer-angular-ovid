@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 import { EditorialConventionLayoutData } from 'src/app/directives/editorial-convention-layout.directive';
-import { ChangeLayerData, Mod, Note } from 'src/app/models/evt-models';
+import { ChangeLayerData, GenericElement, Mod, Note } from 'src/app/models/evt-models';
 import { register } from 'src/app/services/component-register.service';
 import { EditionlevelSusceptible, Highlightable, ShowDeletionsSusceptible, TextFlowSusceptible } from '../components-mixins';
 import { distinctUntilChanged, map, scan, startWith, Subject } from 'rxjs';
@@ -74,7 +74,7 @@ export class ModComponent {
     };
   }
 
-  getLayerData(data: ChangeLayerData) {
+  setLayerData(data: ChangeLayerData) {
     this.orderedLayers = data?.layerOrder;
     this.selectedLayer = data?.selectedLayer;
     if (this.orderedLayers.length > 0) {
@@ -102,11 +102,11 @@ export class ModComponent {
     return 0;
   }
 
-  layerHidden(subEl): boolean {
+  layerHidden(subEl: GenericElement): boolean {
     if (this.editionLevel !== 'changesView') {
       return false;
     }
-    this.evtStatusService.currentChanges$.subscribe(({ next: (data) => this.getLayerData(data) }));
+    this.evtStatusService.currentChanges$.subscribe(({ next: (data) => this.setLayerData(data) }));
     if ((this.selectedLayer !== undefined) && (this.data.changeLayer !== undefined)) {
       // we are always showing deletions regardless of mod change layer
       if (!this.data.insideApp[0] && subEl.class === 'del') {

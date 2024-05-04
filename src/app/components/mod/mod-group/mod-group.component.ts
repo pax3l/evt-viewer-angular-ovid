@@ -20,7 +20,6 @@ export class ModGroupComponent {
 
   public changeSeparatorVisible = AppConfig.evtSettings.edition.showSeparatorBetweenChanges;
 
-  public edLevel: EditionLevelType;
   public mods: Mod[];
 
   public orderedLayers: string[];
@@ -61,10 +60,9 @@ export class ModGroupComponent {
   get modGroup() { return this.mods; }
 
   @Input() set editionLevel(el: EditionLevelType) {
-    this.edLevel = el;
     this.editionLevelChange.next(el);
   }
-  get editionLevel() { return this.edLevel; }
+
   editionLevelChange = new BehaviorSubject<EditionLevelType | ''>('');
 
   @Input() containerElement;
