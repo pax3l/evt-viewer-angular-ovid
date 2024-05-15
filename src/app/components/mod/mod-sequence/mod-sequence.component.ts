@@ -12,8 +12,8 @@ export class ModSequenceComponent {
 
   public sequence: Mod[];
 
-  public ordLayers: string[];
-  public selLayer: string;
+  private ordLayers: string[];
+  private selLayer: string;
 
   public showSeqAttr = AppConfig.evtSettings.edition.changeSequenceView.showSeqAttr;
   public showVarSeqAttr = AppConfig.evtSettings.edition.changeSequenceView.showVarSeqAttr;

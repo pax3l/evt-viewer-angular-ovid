@@ -23,7 +23,6 @@ export class ModGroupComponent {
   public mods: Mod[];
 
   public orderedLayers: string[];
-  public reversedLayers: string[];
 
   public selLayer: string;
 
@@ -39,7 +38,6 @@ export class ModGroupComponent {
     distinctUntilChanged(),
     map(({ layerOrder }) => {
       this.orderedLayers = layerOrder;
-      this.reversedLayers = layerOrder.slice().reverse();
 
       return layerOrder.slice().reverse();
     } ),
@@ -66,10 +64,6 @@ export class ModGroupComponent {
   editionLevelChange = new BehaviorSubject<EditionLevelType | ''>('');
 
   @Input() containerElement;
-
-  stopPropagation(e: MouseEvent) {
-    e.stopPropagation();
-  }
 
   getLayerIndex(layer): number {
     if (layer) {

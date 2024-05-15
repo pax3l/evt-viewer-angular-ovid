@@ -41,10 +41,6 @@ export class ModDetailComponent {
 
   editionLevelChange = new BehaviorSubject<EditionLevelType | ''>('');
 
-  stopPropagation(e: MouseEvent) {
-    e.stopPropagation();
-  }
-
   isBoxVisible() {
     this.boxVisible = !(this.modEntry?.insideApp[0]);
   }
