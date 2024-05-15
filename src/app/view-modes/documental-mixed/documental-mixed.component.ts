@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DisplayGrid, GridsterConfig, GridsterItem, GridType } from 'angular-gridster2';
 import { distinctUntilChanged, map, shareReplay, withLatestFrom } from 'rxjs/operators';
 import { AppConfig, EditionLevel } from '../../app.config';
@@ -13,7 +13,7 @@ import { EVTStatusService } from '../../services/evt-status.service';
   styleUrls: ['./documental-mixed.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DocumentalMixedComponent implements OnInit, OnDestroy {
+export class DocumentalMixedComponent implements OnInit {
   public layoutOptions: GridsterConfig = {
     gridType: GridType.Fit,
     displayGrid: DisplayGrid.None,
@@ -86,10 +86,6 @@ export class DocumentalMixedComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.evtStatusService.updateEditionLevels$.next(['changesView']);
-  }
-
-  ngOnDestroy(): void {
-    this.evtStatusService.updateEditionLevels$.next(['diplomatic']);
   }
 
 

@@ -27,14 +27,14 @@ export class TextPanelComponent {
     return this._mc;
   }
 
+  public orderedLayers: string[];
+
   public selLayer: string;
   @Input() set selectedLayer(layer: string) {
     this.selLayer = layer;
     this.evtStatus.updateLayer$.next(layer);
   }
   get selectedLayer() { return this.selLayer; }
-
-  public orderedLayers: string[];
 
   @Input() hideEditionLevelSelector: boolean;
 
@@ -178,15 +178,6 @@ export class TextPanelComponent {
 
   private updatingPageFromScroll = false;
 
-  public selectedLayer$ = this.evtStatus.currentChanges$.pipe(
-    distinctUntilChanged(),
-    map(({ selectedLayer }) => {
-      this.selectedLayer = selectedLayer;
-
-      return selectedLayer;
-    }),
-  );
-
   constructor(
     public evtModelService: EVTModelService,
     public evtStatus: EVTStatusService,
@@ -221,7 +212,7 @@ export class TextPanelComponent {
     this.deletionsText = (this.showDeletions) ? 'showsDeletions' : 'hidesDeletions'
   }
 
-  updateSelectedLayer(layer) {
+  updateSelectedLayer(layer: string) {
     this.selectedLayer = layer;
   }
 
