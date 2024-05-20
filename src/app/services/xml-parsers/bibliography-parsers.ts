@@ -1,6 +1,7 @@
 import { normalizeSpaces } from 'src/app/utils/xml-utils';
 import { parse, xmlParser } from '.';
-import { BibliographicEntry, BibliographicList, BibliographicStructEntry, BibliographyClass, XMLElement } from '../../models/evt-models';
+// eslint-disable-next-line max-len
+import { AuthorDetail, BibliographicEntry, BibliographicList, BibliographicStructEntry, BibliographyClass, XMLElement } from '../../models/evt-models';
 import { AttributeParser, GenericElemParser } from './basic-parsers';
 import { createParser, getID, parseChildren, Parser } from './parser-models';
 import { BasicParser } from './quotes-parser';
@@ -25,7 +26,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return Array.from(xml.querySelectorAll<XMLElement>(':scope > '+name)).map((x) => this.getTrimmedText(x));
     }
 
-    protected getChildrenTextAndSpecificAttribute = function(xml: XMLElement, name: string, attribute: string) {
+    protected getChildrenTextAndSpecificAttribute = function(xml: XMLElement, name: string, attribute: string): string[] {
         return Array.from(xml.querySelectorAll<XMLElement>(name)).map((x) =>
         x.getAttribute(attribute) !== null ?
         x.getAttribute(attribute)+' '+this.getTrimmedText(x) :
@@ -53,7 +54,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return title;
     }
 
-    protected getCitingText(element: XMLElement, includeUnit: boolean){
+    protected getCitingText(element: XMLElement, includeUnit: boolean): string{
         const from = element.getAttribute('from');
         const to = element.getAttribute('to');
         const unit = element.getAttribute('unit');
@@ -99,7 +100,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         return '';
     }
 
-    protected getAuthorsDetails(element: XMLElement){
+    protected getAuthorsDetails(element: XMLElement): AuthorDetail[]{
         const authors = Array.from(element.querySelectorAll('author'));
 
         return authors.map((el) => {
@@ -115,13 +116,13 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
         });
     }
 
-    protected getIdnoTextByType(element: XMLElement, type: string){
+    protected getIdnoTextByType(element: XMLElement, type: string): string{
         const idno = element.querySelector<XMLElement>('idno[type="' + type + '" i]');
 
         return idno ? this.getTrimmedText(idno) : null;
     }
 
-    protected getDate(xml: XMLElement){
+    protected getDate(xml: XMLElement): string[]{
         return Array.from(xml.querySelectorAll('date'))
             .map((x) => x.getAttribute('when') && !x.textContent ? x.getAttribute('when') : this.getTrimmedText(x));
     }
