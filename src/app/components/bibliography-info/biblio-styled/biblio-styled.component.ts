@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AfterViewInit, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { AppConfig, BibliographicStyle, CitingRanges } from 'src/app/app.config';
-import { BibliographicEntry, BibliographicStructEntry } from 'src/app/models/evt-models';
+import { AuthorDetail, BibliographicEntry, BibliographicStructEntry } from 'src/app/models/evt-models';
 
 @Component({
   selector: 'evt-styled-biblio-entry',
@@ -37,7 +37,7 @@ export class StyledBiblioEntryComponent implements OnChanges, AfterViewInit {
   }
 
   getContextForElement(element: string, structEntry: BibliographicStructEntry): BibliographicEntry[]{
-    let context;
+    let context: BibliographicEntry[];
     switch(element){
       case 'title':
         context = structEntry.analytic;
@@ -57,17 +57,17 @@ export class StyledBiblioEntryComponent implements OnChanges, AfterViewInit {
     return context;
   }
 
-  firstContainsProperty(entries: BibliographicEntry[], element:string){
+  firstContainsProperty(entries: BibliographicEntry[], element:string): boolean{
     const elementInFirstEntry = entries[0]?.[element];
 
     return elementInFirstEntry && elementInFirstEntry.length > 0;
   }
 
-  containsOnlyEmptyValues(arr: string[]){
+  containsOnlyEmptyValues(arr: string[]): boolean{
     return arr.reduce((prev, x) => (x === '') && prev, true);
   }
 
-  requiresAcronym(elem: CitingRanges){
+  requiresAcronym(elem: CitingRanges): boolean{
     const publicationStyle = this.styleProperties.publicationStyle || { citingAcronym: 'none' };
     if(!publicationStyle?.citingAcronym) { return false; }
 
@@ -80,15 +80,15 @@ export class StyledBiblioEntryComponent implements OnChanges, AfterViewInit {
     return publicationStyle.citingAcronym.includes(elem);
   }
 
-  getPublisherDetailsOrder(){
+  getPublisherDetailsOrder(): string[]{
     return this.showList.filter((x) => x === 'publisher' || x === 'pubPlace');
   }
 
-  getAuthorsDetails(entries: BibliographicEntry[]){
+  getAuthorsDetails(entries: BibliographicEntry[]): AuthorDetail[]{
     return entries.reduce((prev, e) => prev.concat(e.authorsDetails), []);
   }
 
-  isStructured(entry: BibliographicEntry){
+  isStructured(entry: BibliographicEntry): boolean{
     // searching for the most relevant signs of a structured entry.
     return entry.originalEncoding.querySelectorAll('title, author, date').length > 0;
   }

@@ -198,16 +198,17 @@ export class BibliographicList extends GenericElement {
     sources: BibliographicEntry[];
 }
 
+export interface AuthorDetail {
+    fullName: string;
+    forename: string;
+    forenameInitials: string;
+    surname: string;
+    nameLink: string[];
+}
 export class BibliographicEntry extends GenericElement {
     id: string;
     author: string[];
-    authorsDetails: Array<{
-        fullName: string,
-        forename: string,
-        forenameInitials: string,
-        surname: string,
-        nameLink: string,
-    }>;
+    authorsDetails: AuthorDetail[];
     editor: string[];
     title: string[];
     titleDetails: {
