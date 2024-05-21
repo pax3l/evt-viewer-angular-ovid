@@ -32,7 +32,7 @@ export class AppConfig {
                 ]).pipe(
                     map(([ui, edition, editorialConventions]) => {
                         console.log(ui, edition, files);
-                        this.updateStyleFromConfig(edition);
+                        this.updateStyleFromConfig(edition, ui);
                         // Handle default values => TODO: Decide how to handle defaults!!
                         if (ui.defaultLocalization) {
                             if (ui.availableLanguages.find((l) => l.code === ui.defaultLocalization && l.enable)) {
@@ -61,12 +61,16 @@ export class AppConfig {
      * this way we don't need to inject a style property in each element
      * @param edition EditionConfig
      */
-    updateStyleFromConfig(edition: EditionConfig) {
+    updateStyleFromConfig(edition: EditionConfig, ui: UiConfig) {
         const rules = [];
-        rules['.' + AnalogueClass + ' .opened'] = `background-color: ${edition.readingColorDark}`;
-        rules['.' + SourceClass + ' .opened'] = `background-color: ${edition.readingColorDark}`;
-        rules['.' + AnalogueClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer`;
-        rules['.' + SourceClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer`;
+        rules['.edition-font'] = `font-family: ${edition.fontFamily}; font-size: ${edition.fontSize};`;
+        rules['.app-detail-tabs .nav-link'] = `font-family: ${ui.fontFamily};`;
+        rules['.ui-font'] = `font-family: ${ui.fontFamily}; font-size: ${ui.fontSize};`;
+        rules['.app-detail-tabs'] = `font-family: ${ui.fontFamily};`;
+        rules['.' + AnalogueClass + ' .opened'] = `background-color: ${edition.readingColorDark};`;
+        rules['.' + SourceClass + ' .opened'] = `background-color: ${edition.readingColorDark};`;
+        rules['.' + AnalogueClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer;`;
+        rules['.' + SourceClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer;`;
         Object.entries(rules).forEach(([selector,style]) => { updateCSS([[selector,style]]) });
     }
 
@@ -92,6 +96,8 @@ export interface UiConfig {
     initNavBarOpened: boolean;
     thumbnailsButton: boolean;
     viscollButton: boolean;
+    fontFamily: string;
+    fontSize: string;
     theme: 'neutral' | 'modern' | 'classic';
     syncZonesHighlightButton: boolean;
 }
@@ -100,6 +106,8 @@ export interface EditionConfig {
     editionTitle: string;
     badge: string;
     editionHome: string;
+    fontFamily: string;
+    fontSize: string;
     showLists: boolean;
     downloadableXMLSource: boolean;
     availableEditionLevels: EditionLevel[];
