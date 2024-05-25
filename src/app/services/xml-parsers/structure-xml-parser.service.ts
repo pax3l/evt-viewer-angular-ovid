@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AppConfig } from '../../app.config';
 import { EditionStructure, GenericElement, OriginalEncodingNodeType, Page, XMLElement } from '../../models/evt-models';
-import { createNsResolver, getElementsBetweenTreeNode, isNestedInElem } from '../../utils/dom-utils';
+import { getElementsBetweenTreeNode, isNestedInElem } from '../../utils/dom-utils';
 import { GenericParserService } from './generic-parser.service';
 import { getID, ParseResult } from './parser-models';
 
@@ -99,7 +99,12 @@ export class StructureXmlParserService {
     return pageContent
       .map((node) => {
 
-        const origEl = getEditionOrigNode(node, doc);
+        //const origEl = getEditionOrigNode(node, doc);
+        // issue #228
+        // the original line is commented because this function causes the node to be revered at its original state
+        // before the pb division, see issue #228 details for further info.
+        // for now this quick fix allows a proper text division but we need to investigate exceptions and particular cases
+        const origEl = node;
 
         if (origEl.nodeName === this.frontTagName || isNestedInElem(origEl, this.frontTagName)) {
           if (this.hasOriginalContent(origEl)) {
@@ -135,6 +140,7 @@ export class StructureXmlParserService {
   }
 }
 
+/* this function is only momentarily commented, waiting for issue #228 to be better addressed
 function getEditionOrigNode(el: XMLElement, doc: Document) {
   if (el.getAttribute && el.getAttribute('xpath')) {
     const path = doc.documentElement.namespaceURI ? el.getAttribute('xpath').replace(/\//g, '/ns:') : el.getAttribute('xpath');
@@ -145,3 +151,4 @@ function getEditionOrigNode(el: XMLElement, doc: Document) {
 
   return el;
 }
+*/

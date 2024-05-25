@@ -123,9 +123,14 @@ export class AnalogueParser extends BasicParser implements Parser<XMLElement> {
     }
 
     private getQuotedTextFromElements(sources: BibliographicEntry[], elements: XMLElement[]): [{id: string, quote: string}] {
+        // eslint-disable-next-line prefer-const
         let quotesInSources = this.getQuotedTextFromSources(sources);
         const notDisplayedInText = ['Note','BibliographicList','BibliographicEntry','BibliographicStructEntry','Analogue','MsDesc'];
-        elements.forEach((el: XMLElement) => { if (!notDisplayedInText.includes(el['type'])) { quotesInSources.push( { id: el.id, quote: el })} });
+        elements.forEach((el: XMLElement) => {
+            if (!notDisplayedInText.includes(el['type'])) {
+                quotesInSources.push( { id: el.id, quote: el })
+            }
+        });
 
         return quotesInSources;
     }
