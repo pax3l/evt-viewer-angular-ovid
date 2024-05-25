@@ -63,10 +63,10 @@ export class AppConfig {
      */
     updateStyleFromConfig(edition: EditionConfig, ui: UiConfig) {
         const rules = [];
-        rules['.edition-font'] = `font-family: ${edition.fontFamily}; font-size: ${edition.fontSize};`;
-        rules['.app-detail-tabs .nav-link'] = `font-family: ${ui.fontFamily};`;
-        rules['.ui-font'] = `font-family: ${ui.fontFamily}; font-size: ${ui.fontSize};`;
-        rules['.app-detail-tabs'] = `font-family: ${ui.fontFamily};`;
+        rules['.edition-font'] = `font-family: ${ui.mainFontFamily}; font-size: ${ui.mainFontSize};`;
+        rules['.app-detail-tabs .nav-link'] = `font-family: ${ui.secondaryFontFamily};`;
+        rules['.ui-font'] = `font-family: ${ui.secondaryFontFamily}; font-size: ${ui.secondaryFontSize};`;
+        rules['.app-detail-tabs'] = `font-family: ${ui.secondaryFontFamily};`;
         rules['.' + AnalogueClass + ' .opened'] = `background-color: ${edition.readingColorDark};`;
         rules['.' + SourceClass + ' .opened'] = `background-color: ${edition.readingColorDark};`;
         rules['.' + AnalogueClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer;`;
@@ -96,8 +96,10 @@ export interface UiConfig {
     initNavBarOpened: boolean;
     thumbnailsButton: boolean;
     viscollButton: boolean;
-    fontFamily: string;
-    fontSize: string;
+    mainFontFamily: string;
+    mainFontSize: string;
+    secondaryFontFamily: string;
+    secondaryFontSize: string;
     theme: 'neutral' | 'modern' | 'classic';
     syncZonesHighlightButton: boolean;
 }
@@ -106,8 +108,6 @@ export interface EditionConfig {
     editionTitle: string;
     badge: string;
     editionHome: string;
-    fontFamily: string;
-    fontSize: string;
     showLists: boolean;
     downloadableXMLSource: boolean;
     availableEditionLevels: EditionLevel[];

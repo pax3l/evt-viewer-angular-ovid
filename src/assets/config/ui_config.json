@@ -82,8 +82,10 @@
 	"initNavBarOpened": true,
 	"thumbnailsButton": true,
 	"viscollButton": true,
-	"fontFamily": "Arial, sans-serif",
-	"fontSize": "1.1em",
+	"mainFontFamily": "Junicode, Times, serif",
+	"mainFontSize": "1.1rem",
+	"secondaryfontFamily": "Arial, sans-serif",
+	"secondaryfontSize": "1.1em",
 	"theme": "modern",
 	"syncZonesHighlightButton": true
 }

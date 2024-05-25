@@ -2,8 +2,6 @@
   "editionTitle": "My Digital Edition",
   "badge": "alpha",
   "editionHome": "evt.labcd.unipi.it/",
-  "fontFamily": "Junicode, Times, serif",
-  "fontSize": "1.1rem",
   "availableEditionLevels": [
     {
       "id": "diplomatic",
