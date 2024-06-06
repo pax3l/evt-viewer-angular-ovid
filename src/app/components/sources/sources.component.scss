@@ -3,10 +3,11 @@
 .source-container {
     border: 1px solid rgba(128, 128, 128, 0.149);
     padding: 0;
-    margin: 0.5rem 0.5rem 1rem 0.5rem;
+    margin:0.5em 0em 0.5em 0em;
     font-family: serif;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
     background-color:rgba(32, 66, 81, 0.18);
+    min-width: 35em;
 }
 
 .source-detail-content {
@@ -14,6 +15,7 @@
     background-color: unset !important;
     padding-bottom: 0.6em !important;
     pointer-events: none;
+    font-weight: initial;
 }
 
 .source-quote-button {
@@ -62,6 +64,13 @@
     cursor: pointer;
     border-radius: 0;
     font-style: normal;
+    font-weight:initial;
+    font-family: system-ui;
+    font-size: 92%;
+}
+
+.tab-content {
+    margin-top: -0.1em;
 }
 
 .app-detail-content,
@@ -81,8 +90,10 @@
 .app-detail-tabs {
     font-size: 1rem;
     margin: 0;
-    padding: 0.313rem 0 0 0;
+    padding: 0;
+    border-top: 3px double #000 !important;
     .nav-link {
+        display:inline-block;
         background-color: transparent;
         color: #000000;
         line-height: 1;

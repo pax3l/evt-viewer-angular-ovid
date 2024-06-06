@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import { AppConfig } from 'src/app/app.config';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -58,6 +59,7 @@ interface OpenSeaDragonOverlay{
   selector: 'evt-osd',
   templateUrl: './osd.component.html',
   styleUrls: ['./osd.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OsdComponent implements AfterViewInit, OnDestroy {
 
@@ -167,7 +169,7 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
       visibilityRatio: 0.66,
       minZoomLevel: 0.3,
       maxZoomLevel: 1,
-      defaultZoomLevel: 1,
+      defaultZoomLevel: AppConfig.evtSettings.edition.defaultImageZoomLevel,
       sequenceMode: true,
       prefixUrl: 'assets/osd/images/',
       id: this.div.nativeElement.id,
@@ -178,6 +180,8 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
         dblClickToZoom: true,
       },
       aspectRatio: 0.66,
+      immediateRender: true,
+      preload: true,
       placeholderFillStyle: 'assets/images/empty-image.jpg',
     };
 
@@ -188,7 +192,7 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
           this.viewer.destroy();
           this.viewer = undefined;
         }
-        console.log('init');
+        //console.log('init');
 
         if (!!tileSources) {
           //TODO: check this, for test only
@@ -207,7 +211,7 @@ export class OsdComponent implements AfterViewInit, OnDestroy {
 
               } as OsdTileSource));
 
-           console.log('tiles:', tiles);
+           //console.log('tiles:', tiles);
               this.viewer = OpenSeadragon({
                 ...commonOptions,
                 ...this.options,

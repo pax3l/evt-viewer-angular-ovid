@@ -55,6 +55,13 @@
 			"id": "textVersions",
 			"label": "Text Versions",
 			"enable": true
+		},
+		{
+			"icon": "documix",
+			"iconSet": "evt",
+			"id": "documentalMixed",
+			"label": "Documental",
+			"enable": true
 		}
 	],
 	"localization": true,
@@ -63,7 +70,7 @@
 		{
 			"code": "en",
 			"label": "languageEn",
-			"": true
+			"enable": true
 		},
 		{
 			"code": "it",
@@ -75,6 +82,10 @@
 	"initNavBarOpened": true,
 	"thumbnailsButton": true,
 	"viscollButton": true,
+	"mainFontFamily": "Junicode, Times, serif",
+	"mainFontSize": "1.1rem",
+	"secondaryfontFamily": "Arial, sans-serif",
+	"secondaryfontSize": "1.1em",
 	"theme": "modern",
 	"syncZonesHighlightButton": true
 }

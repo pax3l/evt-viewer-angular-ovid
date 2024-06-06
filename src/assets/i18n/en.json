@@ -186,5 +186,9 @@
     "analogueIn": "Analogue in",
     "corresps": "Correspondences",
     "addImage": "Add image",
-    "removeImage": "Remove image"
+    "removeImage": "Remove image",
+    "corrSeq": "Correction sequence",
+    "criticalNote": "Critical note",
+    "showsDeletions": "Show deletions",
+    "hidesDeletions": "Hide deletions"
 }

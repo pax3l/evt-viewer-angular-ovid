@@ -5,7 +5,7 @@ import { EditorialConvention, EditorialConventionLayouts } from '../models/evt-m
 
 // List of handled editorial convention
 export type EditorialConventionDefaults = 'addition' | 'additionAbove' | 'additionBelow' | 'additionInline' | 'additionLeft' | 'additionRight' |
-  'damage' | 'deletion' | 'sicCrux' | 'surplus' | 'sources' | 'analogues';
+  'damage' | 'deletion' | 'sicCrux' | 'surplus' | 'sources' | 'analogues' | 'mod' ;
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +31,12 @@ export class EditorialConventionsService {
           'background-color': '#bdecb6',
         },
       },
+      changesView: {
+        style: {
+          'vertical-align': 'super',
+          'font-size': '1rem',
+        },
+      },
     },
     additionBelow: {
       interpretative: {
@@ -42,6 +48,12 @@ export class EditorialConventionsService {
           'vertical-align': 'bottom',
           'font-size': '.7rem',
           'background-color': '#bdecb6',
+        },
+      },
+      changesView: {
+        style: {
+          'vertical-align': 'bottom',
+          'font-size': '1rem',
         },
       },
     },
@@ -69,6 +81,11 @@ export class EditorialConventionsService {
           'background-color': '#bdecb6',
         },
       },
+      changesView: {
+        style: {
+          'margin-left': '-1rem',
+        },
+      },
     },
     additionRight: {
       interpretative: {
@@ -89,6 +106,11 @@ export class EditorialConventionsService {
           'background-color': 'rgba(193, 193, 193, 0.7)',
         },
       },
+      changesView: {
+        style: {
+          'background-color': 'rgba(193, 193, 193, 0.7)',
+        },
+      },
     },
     deletion: {
       diplomatic: {
@@ -101,6 +123,11 @@ export class EditorialConventionsService {
         pre: '[[',
         post: ']]',
       },
+      changesView: {
+        style: {
+          'text-decoration': 'line-through',
+        },
+      },
     },
     sicCrux: {
       diplomatic: {
@@ -112,6 +139,10 @@ export class EditorialConventionsService {
         post: '&dagger;',
       },
       critical: {
+        pre: '&dagger;',
+        post: '&dagger;',
+      },
+      changesView: {
         pre: '&dagger;',
         post: '&dagger;',
       },
@@ -162,6 +193,29 @@ export class EditorialConventionsService {
         pre: '🗎',
         style: {
           'text-decoration': 'underline dotted from-font',
+        },
+      },
+      changesView: {
+        pre: '🗎',
+        style: {
+          'text-decoration': 'underline dotted from-font',
+        },
+      },
+    },
+    mod: {
+      diplomatic: {
+          style: {
+          'background-color': '#bdecb6',
+        },
+      },
+      critical: {
+        style: {
+          'background-color': '#bdecb6',
+        },
+      },
+      interpretative: {
+        style: {
+          'background-color': '#bdecb6',
         },
       },
     },

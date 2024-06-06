@@ -185,5 +185,9 @@
   "analogueIn": "Passo parallelo in",
   "corresps": "Corrispondenze",
   "addImage": "Aggiungi immagine",
-  "removeImage": "Rimuovi immagine"
+  "removeImage": "Rimuovi immagine",
+  "corrSeq": "Sequenza correzioni",
+  "criticalNote": "Nota critica",
+  "showsDeletions": "Mostra cancellazioni",
+  "hidesDeletions": "Nascondi cancellazioni"
 }
