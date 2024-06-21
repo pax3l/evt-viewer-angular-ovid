@@ -23,7 +23,7 @@ export class StyledBiblioEntryComponent implements OnChanges, AfterViewInit {
   @Input() data: BibliographicEntry | BibliographicStructEntry;
   @Input() style: string = AppConfig.evtSettings.ui.defaultBibliographicStyle;
 
-  public biblEntry;
+  public biblEntry: any;
   public showList: string[];
   public showAttrNames = AppConfig.evtSettings.edition.biblView.showAttrNames;
   public showEmptyValues = AppConfig.evtSettings.edition.biblView.showEmptyValues;

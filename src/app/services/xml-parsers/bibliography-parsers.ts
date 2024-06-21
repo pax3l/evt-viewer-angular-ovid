@@ -14,7 +14,7 @@ export class BibliographyParser extends BasicParser implements Parser<XMLElement
     protected attributeParser = createParser(AttributeParser, this.genericParse);
     protected elementParser = createParser(GenericElemParser, parse);
 
-    protected getTrimmedText = function(s): string {
+    protected getTrimmedText = function(s: Element): string {
         return s.textContent.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
     }
 
