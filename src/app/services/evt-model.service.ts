@@ -26,6 +26,7 @@ import { WitnessesParserService } from './xml-parsers/witnesses-parser.service';
 import { SourceEntriesParserService } from './xml-parsers/source-entries-parser.service';
 import { AnalogueEntriesParserService } from './xml-parsers/analogues-entries-parser.service';
 import { AppConfig } from '../app.config';
+import { BibliographicEntriesParserService } from './xml-parsers/bibliographic-entries-parser.service';
 import { ModParserService } from './xml-parsers/mod-parser.service';
 
 @Injectable({
@@ -357,6 +358,11 @@ export class EVTModelService {
     shareReplay(1),
   );
 
+  public readonly bibliographicEntries$ = this.editionSource$.pipe(
+    map((source) => this.bibliographicEntriesParser.parseBibliographicEntries(source)),
+    shareReplay(1),
+  )
+
   constructor(
     private analogueParser: AnalogueEntriesParserService,
     private editionDataService: EditionDataService,
@@ -370,6 +376,7 @@ export class EVTModelService {
     private linesVersesParser: LinesVersesParserService,
     private msDescParser: MsDescParserService,
     private sourceParser: SourceEntriesParserService,
+    private bibliographicEntriesParser: BibliographicEntriesParserService,
     private modParser: ModParserService,
   ) {
   }

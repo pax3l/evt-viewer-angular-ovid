@@ -4,7 +4,7 @@ import { Analogue, AnalogueClass, BibliographicEntry, BibliographicList, Generic
 import { AnchorParser, AttributeParser, GenericElemParser, MilestoneParser } from './basic-parsers';
 import { createParser, getID, parseChildren, Parser } from './parser-models';
 import { chainFirstChildTexts, getExternalElements, normalizeSpaces } from '../../utils/xml-utils';
-import { BibliographyParser } from './bilbliography-parsers';
+import { BibliographyParser } from './bibliography-parsers';
 import { BasicParser } from './quotes-parser';
 
 @xmlParser('evt-analogue-entry-parser', AnalogueParser)

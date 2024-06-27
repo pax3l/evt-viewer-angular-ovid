@@ -6,7 +6,7 @@ import { Analogue, BibliographicEntry, BibliographicList, BibliographicStructEnt
 import { AnalogueParser } from './analogue-parser';
 import { createParser, getID, parseChildren, ParseFn, Parser } from './parser-models';
 import { isAnalogue, isSource, normalizeSpaces } from 'src/app/utils/xml-utils';
-import { BibliographyParser } from './bilbliography-parsers';
+import { BibliographyParser } from './bibliography-parsers';
 import { chainFirstChildTexts } from '../../utils/xml-utils';
 import { GenericElemParser } from './basic-parsers';
 

@@ -19,7 +19,7 @@ export class SourceNoteComponent implements OnInit {
 
   createNote(v, type): Note {
     const item = v[type];
-    let content = item.extSources || [];
+    const content = item.extSources || [];
     if (type === 'analogue') {
       content.push( item.extLinkedElements );
       content.push( item.sources );

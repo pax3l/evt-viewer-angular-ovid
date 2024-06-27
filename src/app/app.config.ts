@@ -96,6 +96,16 @@ export interface UiConfig {
     initNavBarOpened: boolean;
     thumbnailsButton: boolean;
     viscollButton: boolean;
+    defaultBibliographicStyle: string;
+	  allowedBibliographicStyles: {
+      [key: string]: {
+              id: string;
+        label: string;
+        enabled: boolean;
+              propsOrder: BibliographicProperties[];
+              properties: BibliographicStyle;
+        }
+    };
     mainFontFamily: string;
     mainFontSize: string;
     secondaryFontFamily: string;
@@ -103,6 +113,27 @@ export interface UiConfig {
     theme: 'neutral' | 'modern' | 'classic';
     syncZonesHighlightButton: boolean;
 }
+export type CitingRanges = 'issue' | 'volume' | 'page';
+export type BibliographicProperties = 'author'| 'date'| 'title'| 'editor' | 'publication' | 'pubPlace' | 'publisher' | 'doi';
+export type BibliographicStyle = Partial<{
+    propsDelimiter: string;
+    authorStyle: Partial<{
+        forenameInitials: boolean;
+        delimiter: string;
+        lastDelimiter: string;
+        order: Array<'forename' | 'surname'>;
+        maxAuthors: string;
+    }>;
+    publicationStyle: Partial<{
+        citingAcronym: 'all' | 'none' | CitingRanges[];
+        includeEditor: boolean;
+        inBrackets: CitingRanges[];
+    }>;
+    dateInsidePublication: boolean;
+    titleQuotes: boolean;
+    emphasized: BibliographicProperties[];
+    inBrackets: BibliographicProperties[];
+}>;
 
 export interface EditionConfig {
     editionTitle: string;

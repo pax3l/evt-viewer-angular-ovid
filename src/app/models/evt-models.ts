@@ -207,15 +207,33 @@ export class BibliographicList extends GenericElement {
     sources: BibliographicEntry[];
 }
 
+export interface AuthorDetail {
+    fullName: string;
+    forename: string;
+    forenameInitials: string;
+    surname: string;
+    nameLink: string[];
+}
 export class BibliographicEntry extends GenericElement {
     id: string;
     author: string[];
+    authorsDetails: AuthorDetail[];
     editor: string[];
     title: string[];
+    titleDetails: {
+        title: string;
+        level: string;
+    };
+    publication: string;
+    idno: string[];
+    doi: string;
     date: string[];
     publisher: string[];
     pubPlace: string[];
     citedRange: string[];
+    pageNumber: string;
+    volumeNumber: string;
+    issueNumber: string;
     biblScope: string[];
     text: string;
     quotedText: string;
@@ -1334,6 +1352,10 @@ export class Mod extends GenericElement {
 export class RevisionDesc extends GenericElement {
     content: Array<ListChange | Change>;
     status?: Status | string;
+}
+
+export class BibliographyInfo {
+    bibliographicEntries: Array<BibliographicEntry | BibliographicStructEntry>;
 }
 
 export class ProjectInfo {

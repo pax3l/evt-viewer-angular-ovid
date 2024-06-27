@@ -33,6 +33,8 @@ import { ApparatusEntryComponent } from './components/apparatus-entry/apparatus-
 import { ApparatusEntryDetailComponent } from './components/apparatus-entry/apparatus-entry-detail/apparatus-entry-detail.component';
 import { ApparatusEntryReadingsComponent } from './components/apparatus-entry/apparatus-entry-readings/apparatus-entry-readings.component';
 import { BiblioEntryComponent } from './components/biblio/biblio.component';
+import { BibliographyInfoComponent } from './components/bibliography-info/bibliography-info.component';
+import { BibliographicStyleSelectorComponent } from './components/bibliography-info/bibliographic-style-selector/bibliographic-style-selector';
 import { BiblioListComponent } from './components/biblioList/biblio-list.component';
 import { ChangeLayerSelectorComponent } from './components/change-layer-selector/change-layer-selector.component';
 import { CharComponent } from './components/char/char.component';
@@ -124,6 +126,7 @@ import { SourceNoteComponent } from './components/sources/source-note/source-not
 import { SourcesComponent } from './components/sources/sources.component';
 import { SourcesPanelComponent } from './panels/sources-panel/sources-panel.component';
 import { StartsWithPipe } from './pipes/starts-with.pipe';
+import { StyledBiblioEntryComponent } from './components/bibliography-info/biblio-styled/biblio-styled.component';
 import { SubstitutionComponent } from './components/substitution/substitution.component';
 import { SuppliedComponent } from './components/supplied/supplied.component';
 import { SurplusComponent } from './components/surplus/surplus.component';
@@ -215,6 +218,8 @@ const DynamicComponents = [
     AnnotatorDirective,
     AppComponent,
     BiblioEntryComponent,
+    BibliographyInfoComponent,
+    BibliographicStyleSelectorComponent,
     BiblioListComponent,
     ChangeLayerSelectorComponent,
     CollationComponent,
@@ -263,6 +268,7 @@ const DynamicComponents = [
     SourcesComponent,
     SourcesPanelComponent,
     StartsWithPipe,
+    StyledBiblioEntryComponent,
     SubstitutionComponent,
     TextPanelComponent,
     TextSourcesComponent,
