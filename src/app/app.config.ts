@@ -121,7 +121,7 @@ export type BibliographicStyle = Partial<{
         includeEditor: boolean;
         inBrackets: CitingRanges[];
     }>;
-    dateInsidePublication: boolean
+    dateInsidePublication: boolean;
     titleQuotes: boolean;
     emphasized: BibliographicProperties[];
     inBrackets: BibliographicProperties[];
