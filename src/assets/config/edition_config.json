@@ -6,19 +6,29 @@
     {
       "id": "diplomatic",
       "label": "diplomatic",
-      "enable": true
+      "enable": true,
+      "hidden": false
     },
     {
       "id": "interpretative",
       "label": "interpretative",
-      "enable": true
+      "enable": true,
+      "hidden": false
     },
     {
       "id": "critical",
       "label": "critical",
-      "enable": true
+      "enable": true,
+      "hidden": false
+    },
+    {
+      "id": "changesView",
+      "label": "changes",
+      "enable": true,
+      "hidden": true
     }
   ],
+  "downloadableXMLSource": true,
   "namedEntitiesLists": {
     "persons": {
       "defaultLabel": "Persons",
@@ -128,7 +138,13 @@
     "showEmptyValues": false,
     "inline": true,
     "commaSeparated": true,
-    "showMainElemTextContent": true
+    "showMainElemTextContent": true,
+    "changeSequenceView": {
+      "showVarSeqAttr": false,
+      "showSeqAttr": false,
+      "layerColors": []
+    },
+    "defaultImageZoomLevel": 0.8
   },
   "analogueMarkers": [
     "ParallelPassage",
@@ -136,7 +152,23 @@
     "Parallel",
     "parallel"
   ],
-  "sourcesExcludedFromListByParent": [
-    "desc"
-  ]
+  "sourcesExcludedFromListByParent": ["desc"],
+  "showSubstitutionMarker": true,
+  "showSeparatorBetweenChanges": true,
+  "startingFromDefinitiveLayer": true,
+  "showChangeLayerMarkerInText": true,
+  "changeSequenceView": {
+    "showVarSeqAttr": false,
+    "showSeqAttr": false,
+    "layerColors": {
+      "strato-0": "#71e5fa",
+      "strato-1": "#609cf4",
+      "strato-2": "#0d6efd",
+      "strato-3": "#7B66FF",
+      "strato-4": "#3e22f3",
+      "strato-5": "#100077"
+    }
+  },
+  "defaultImageZoomLevel": 0.8,
+  "multiPageEngineForCriticalEdition": false
 }

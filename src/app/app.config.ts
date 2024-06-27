@@ -32,7 +32,7 @@ export class AppConfig {
                 ]).pipe(
                     map(([ui, edition, editorialConventions]) => {
                         console.log(ui, edition, files);
-                        this.updateStyleFromConfig(edition);
+                        this.updateStyleFromConfig(edition, ui);
                         // Handle default values => TODO: Decide how to handle defaults!!
                         if (ui.defaultLocalization) {
                             if (ui.availableLanguages.find((l) => l.code === ui.defaultLocalization && l.enable)) {
@@ -61,12 +61,16 @@ export class AppConfig {
      * this way we don't need to inject a style property in each element
      * @param edition EditionConfig
      */
-    updateStyleFromConfig(edition: EditionConfig) {
+    updateStyleFromConfig(edition: EditionConfig, ui: UiConfig) {
         const rules = [];
-        rules['.' + AnalogueClass + ' .opened'] = `background-color: ${edition.readingColorDark}`;
-        rules['.' + SourceClass + ' .opened'] = `background-color: ${edition.readingColorDark}`;
-        rules['.' + AnalogueClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer`;
-        rules['.' + SourceClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer`;
+        rules['.edition-font'] = `font-family: ${ui.mainFontFamily}; font-size: ${ui.mainFontSize};`;
+        rules['.app-detail-tabs .nav-link'] = `font-family: ${ui.secondaryFontFamily};`;
+        rules['.ui-font'] = `font-family: ${ui.secondaryFontFamily}; font-size: ${ui.secondaryFontSize};`;
+        rules['.app-detail-tabs'] = `font-family: ${ui.secondaryFontFamily};`;
+        rules['.' + AnalogueClass + ' .opened'] = `background-color: ${edition.readingColorDark};`;
+        rules['.' + SourceClass + ' .opened'] = `background-color: ${edition.readingColorDark};`;
+        rules['.' + AnalogueClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer;`;
+        rules['.' + SourceClass + ':hover'] = `background-color: ${edition.readingColorLight}; cursor:pointer;`;
         Object.entries(rules).forEach(([selector,style]) => { updateCSS([[selector,style]]) });
     }
 
@@ -93,15 +97,19 @@ export interface UiConfig {
     thumbnailsButton: boolean;
     viscollButton: boolean;
     defaultBibliographicStyle: string;
-	allowedBibliographicStyles: {
-		[key: string]: {
-            id: string;
-			label: string;
-			enabled: boolean;
-            propsOrder: BibliographicProperties[];
-            properties: BibliographicStyle;
-	    }
+	  allowedBibliographicStyles: {
+      [key: string]: {
+              id: string;
+        label: string;
+        enabled: boolean;
+              propsOrder: BibliographicProperties[];
+              properties: BibliographicStyle;
+        }
     };
+    mainFontFamily: string;
+    mainFontSize: string;
+    secondaryFontFamily: string;
+    secondaryFontSize: string;
     theme: 'neutral' | 'modern' | 'classic';
     syncZonesHighlightButton: boolean;
 }
@@ -132,6 +140,7 @@ export interface EditionConfig {
     badge: string;
     editionHome: string;
     showLists: boolean;
+    downloadableXMLSource: boolean;
     availableEditionLevels: EditionLevel[];
     namedEntitiesLists: Partial<{
         persons: NamedEntitiesListsConfig;
@@ -163,6 +172,17 @@ export interface EditionConfig {
 	}>;
     analogueMarkers: string[];
     sourcesExcludedFromListByParent: string[];
+    showChangeLayerMarkerInText: boolean;
+    showSeparatorBetweenChanges: boolean;
+    changeSequenceView: Partial<{
+        showVarSeqAttr: boolean;
+        showSeqAttr: boolean;
+        layerColors: string[];
+    }>;
+    startingFromDefinitiveLayer: boolean;
+    defaultImageZoomLevel: number;
+    showSubstitutionMarker: boolean;
+    multiPageEngineForCriticalEdition: boolean;
 }
 
 export type EditionImagesSources = 'manifest' | 'graphics';
@@ -193,12 +213,13 @@ export interface NamedEntitiesListsConfig {
     defaultLabel: string;
     enable: boolean;
 }
-export type EditionLevelType = 'diplomatic' | 'interpretative' | 'critical';
+export type EditionLevelType = 'diplomatic' | 'interpretative' | 'critical' | 'changesView';
 export interface EditionLevel {
     id: EditionLevelType;
     label: string;
     title?: string;
     enable?: boolean;
+    hidden?: boolean;
 }
 
 export interface EditorialConventionsConfig {

@@ -36,7 +36,8 @@ export interface EditionStructure {
     pages: Page[];
 }
 
-export type ViewModeId = 'imageOnly' | 'imageImage' | 'readingText' | 'imageText' | 'textText' | 'collation' | 'textSources' | 'textVersions';
+export type ViewModeId = 'imageOnly' | 'imageImage' | 'readingText' | 'imageText' | 'textText' |
+'collation' | 'textSources' | 'textVersions' | 'documentalMixed';
 
 export interface ViewMode {
     id: ViewModeId;
@@ -54,6 +55,12 @@ export interface Page {
     parsedContent: Array<ParseResult<GenericElement>>;
     url: string;
     facsUrl: string;
+}
+
+export interface ChangeLayerData {
+    list: ListChange[],
+    layerOrder: string[],
+    selectedLayer: string,
 }
 
 export interface NamedEntities {
@@ -166,8 +173,10 @@ export class ApparatusEntry extends GenericElement {
     lemma: Reading;
     readings: Reading[];
     notes: Note[];
-    originalEncoding: string;
+    originalEncoding: OriginalEncodingNodeType;
     nestedAppsIDs: string[];
+    changes: Mod[];
+    orderedReadings: Reading[];
 }
 
 export const SourceClass = 'sourceEntry';
@@ -256,6 +265,7 @@ export class Reading extends GenericElement {
     id: string;
     witIDs: string[];
     significant: boolean;
+    varSeq?: number;
 }
 
 export interface GridItem {
@@ -419,7 +429,12 @@ export class Gap extends GenericElement {
     extent?: string;
 }
 
-export type PlacementType = 'above' | 'below' | 'inline' | 'left' | 'right' | 'inspace' | 'end' | 'sup' | 'sub' | 'under';
+export class Subst extends GenericElement {
+    after: ParseResult<GenericElement>;
+}
+
+
+export type PlacementType = 'above' | 'below' | 'inline' | 'left' | 'right' | 'inspace' | 'end' | 'sup' | 'superscript' | 'sub' | 'under';
 
 export class Addition extends GenericElement {
     place: PlacementType;
@@ -1321,6 +1336,17 @@ export class ListChange extends GenericElement {
     id?: string;
     description?: Description;
     ordered?: boolean;
+}
+
+export class Mod extends GenericElement {
+    id?: string;
+    changeLayer: string;
+    varSeq: string;
+    isRdg: boolean;
+    insideApp: [boolean, string];
+    content: Array<ParseResult<GenericElement>>;
+    notes: Note[];
+    originalEncoding: OriginalEncodingNodeType
 }
 
 export class RevisionDesc extends GenericElement {

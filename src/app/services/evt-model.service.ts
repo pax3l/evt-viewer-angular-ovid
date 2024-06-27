@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { combineLatestWith, map, shareReplay, switchMap } from 'rxjs/operators';
 import {
+  ChangeLayerData,
   Facsimile,
   NamedEntities,
   NamedEntityOccurrence,
   OriginalEncodingNodeType,
-  Page, XMLImagesValues,
+  Page,
+  XMLImagesValues,
   ZoneHotSpot,
   ZoneLine,
 } from '../models/evt-models';
@@ -25,6 +27,7 @@ import { SourceEntriesParserService } from './xml-parsers/source-entries-parser.
 import { AnalogueEntriesParserService } from './xml-parsers/analogues-entries-parser.service';
 import { AppConfig } from '../app.config';
 import { BibliographicEntriesParserService } from './xml-parsers/bibliographic-entries-parser.service';
+import { ModParserService } from './xml-parsers/mod-parser.service';
 
 @Injectable({
   providedIn: 'root',
@@ -129,6 +132,12 @@ export class EVTModelService {
 
   public readonly groups$ = this.witnessesData$.pipe(
     map(({ groups }) => groups),
+    shareReplay(1),
+  );
+
+  // CHANGES
+  public changeData$: Observable<ChangeLayerData> = this.editionSource$.pipe(
+    map((source) => this.modParser.buildChangeList(source)),
     shareReplay(1),
   );
 
@@ -368,6 +377,7 @@ export class EVTModelService {
     private msDescParser: MsDescParserService,
     private sourceParser: SourceEntriesParserService,
     private bibliographicEntriesParser: BibliographicEntriesParserService,
+    private modParser: ModParserService,
   ) {
   }
 

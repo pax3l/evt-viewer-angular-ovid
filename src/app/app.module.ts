@@ -36,6 +36,7 @@ import { BiblioEntryComponent } from './components/biblio/biblio.component';
 import { BibliographyInfoComponent } from './components/bibliography-info/bibliography-info.component';
 import { BibliographicStyleSelectorComponent } from './components/bibliography-info/bibliographic-style-selector/bibliographic-style-selector';
 import { BiblioListComponent } from './components/biblioList/biblio-list.component';
+import { ChangeLayerSelectorComponent } from './components/change-layer-selector/change-layer-selector.component';
 import { CharComponent } from './components/char/char.component';
 import { ChoiceComponent } from './components/choice/choice.component';
 import { CollationComponent } from './view-modes/collation/collation.component';
@@ -43,6 +44,7 @@ import { ContentViewerComponent } from './components/content-viewer/content-view
 import { CriticalApparatusComponent } from './components/critical-apparatus/critical-apparatus.component';
 import { DamageComponent } from './components/damage/damage.component';
 import { DeletionComponent } from './components/deletion/deletion.component';
+import { DocumentalMixedComponent } from './view-modes/documental-mixed/documental-mixed.component';
 import { EditionLevelSelectorComponent } from './components/edition-level-selector/edition-level-selector.component';
 import { EditionStmtComponent } from './components/edition-stmt/edition-stmt.component';
 import { EditorialConventionLayoutDirective } from './directives/editorial-convention-layout.directive';
@@ -74,6 +76,10 @@ import { LbComponent } from './components/lb/lb.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { ManuscriptThumbnailsViewerComponent } from './components/manuscript-thumbnails-viewer/manuscript-thumbnails-viewer.component';
+import { ModComponent } from './components/mod/mod.component';
+import { ModDetailComponent } from './components/mod/mod-detail/mod-detail.component';
+import { ModGroupComponent } from './components/mod/mod-group/mod-group.component';
+import { ModSequenceComponent } from './components/mod/mod-sequence/mod-sequence.component';
 import { MsContentsComponent } from './components/ms-contents/ms-contents.component';
 import { MsDescComponent } from './components/ms-desc/ms-desc.component';
 import { MsDescSectionComponent } from './ui-components/ms-desc-section/ms-desc-section.component';
@@ -90,6 +96,7 @@ import { NamedEntityRefComponent } from './components/named-entity-ref/named-ent
 import { NamedEntityRelationComponent } from './components/named-entity-relation/named-entity-relation.component';
 import { NamespaceComponent } from './components/namespace/namespace.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarImageComponent } from './nav-bar-image/nav-bar-image.component';
 import { NoteComponent } from './components/note/note.component';
 import { NotesStmtComponent } from './components/notes-stmt/notes-stmt.component';
 import { OriginalEncodingViewerComponent } from './components/original-encoding-viewer/original-encoding-viewer.component';
@@ -120,6 +127,7 @@ import { SourcesComponent } from './components/sources/sources.component';
 import { SourcesPanelComponent } from './panels/sources-panel/sources-panel.component';
 import { StartsWithPipe } from './pipes/starts-with.pipe';
 import { StyledBiblioEntryComponent } from './components/bibliography-info/biblio-styled/biblio-styled.component';
+import { SubstitutionComponent } from './components/substitution/substitution.component';
 import { SuppliedComponent } from './components/supplied/supplied.component';
 import { SurplusComponent } from './components/surplus/surplus.component';
 import { TagsDeclComponent } from './components/tags-decl/tags-decl.component';
@@ -132,9 +140,8 @@ import { ThemesService } from './services/themes.service';
 import { TitleStmtComponent } from './components/title-stmt/title-stmt.component';
 import { VerseComponent } from './components/verse/verse.component';
 import { VersesGroupComponent } from './components/verses-group/verses-group.component';
-import { WordComponent } from './components/word/word.component';
-import { NavBarImageComponent } from './nav-bar-image/nav-bar-image.component';
 import { VersionPanelComponent } from './panels/version-panel/version-panel.component';
+import { WordComponent } from './components/word/word.component';
 import { WitnessPanelComponent } from './panels/witness-panel/witness-panel.component';
 import { XmlBeautifyPipe } from './pipes/xml-beautify.pipe';
 import { XMLParsers } from './services/xml-parsers/xml-parsers';
@@ -214,9 +221,11 @@ const DynamicComponents = [
     BibliographyInfoComponent,
     BibliographicStyleSelectorComponent,
     BiblioListComponent,
+    ChangeLayerSelectorComponent,
     CollationComponent,
     ContentViewerComponent,
     CriticalApparatusComponent,
+    DocumentalMixedComponent,
     EditionLevelSelectorComponent,
     EditorialConventionLayoutDirective,
     EntitiesSelectComponent,
@@ -235,6 +244,10 @@ const DynamicComponents = [
     MainHeaderComponent,
     MainMenuComponent,
     ManuscriptThumbnailsViewerComponent,
+    ModComponent,
+    ModDetailComponent,
+    ModGroupComponent,
+    ModSequenceComponent,
     MsDescSectionComponent,
     MsDescSelectorComponent,
     NamedEntityOccurrenceComponent,
@@ -256,6 +269,7 @@ const DynamicComponents = [
     SourcesPanelComponent,
     StartsWithPipe,
     StyledBiblioEntryComponent,
+    SubstitutionComponent,
     TextPanelComponent,
     TextSourcesComponent,
     TextTextComponent,

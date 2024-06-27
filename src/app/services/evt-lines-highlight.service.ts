@@ -16,7 +16,7 @@ export class EvtLinesHighlightService {
       if (page){
         setTimeout(()=>{
         page.parsedContent?.forEach((pc)=>{
-          this.assignLbId(pc, false)
+          if (pc) { this.assignLbId(pc, false); }
         })
         }, 500);
       }
@@ -27,7 +27,7 @@ export class EvtLinesHighlightService {
       if (lines.length > 0) {
         this.highlightLineText(
           lines.map((z)=> ({ id: z.corresp, selected: z.selected })),
-                    );
+        );
       } else {
         this.clearHighlightText();
       }
@@ -120,20 +120,22 @@ export class EvtLinesHighlightService {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private recursiveHighlight( pc: any, lbIds: Array<{id: string, selected: boolean}>): void{
-    if ( pc.type.name !== Verse.name  && pc.type.name !== Paragraph.name  && pc.type.name !== Word.name ){
+    if (pc && pc.type.name !== Verse.name  && pc.type.name !== Paragraph.name  && pc.type.name !== Word.name ){
       const f = lbIds.find( (lbId) => pc.correspId === lbId.id);
       if (f){
-        if (f.selected){
-          pc.class= ' highlightverse selected';
-        } else{
-          pc.class= ' highlightverse';
+        if (f.selected) {
+          pc.class= pc.class + ' highlightverse selected';
+        } else {
+          pc.class= pc.class + ' highlightverse';
         }
-      } else{
-        pc.class =  '';
+      } else {
+        if (pc.class) {
+          pc.class = pc.class.replace(/(highlightverse)(\s)?(selected)?/,'');
+        }
       }
     }
 
-    if (pc.content){
+    if (pc?.content){
       for (const insidePc of pc.content) {
       this.recursiveHighlight(insidePc, lbIds);
       }

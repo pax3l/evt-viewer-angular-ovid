@@ -2,7 +2,7 @@ import { AttributesMap } from 'ng-dynamic-component';
 import { ParserRegister, xmlParser } from '.';
 import {
     Addition, Analogue, Anchor, Attributes, Damage, Deletion, Gap, GenericElement, Lb, Milestone, Note, NoteLayout,
-    Paragraph, PlacementType, Ptr, QuoteEntry, Space, Span, SpanGrp, Supplied, Term, Text, Verse, VersesGroup, Word, XMLElement,
+    Paragraph, PlacementType, Ptr, QuoteEntry, Space, Span, SpanGrp, Subst, Supplied, Term, Text, Verse, VersesGroup, Word, XMLElement,
 } from '../../models/evt-models';
 import { getElementsBetweenTreeNode, isNestedInElem, xpath } from '../../utils/dom-utils';
 import { getExternalElements, isAnalogue, isSource, replaceMultispaces } from '../../utils/xml-utils';
@@ -450,10 +450,12 @@ export class TermParser extends GenericElemParser implements Parser<XMLElement> 
 
 @xmlParser('milestone', MilestoneParser)
 export class MilestoneParser extends GenericElemParser implements Parser<XMLElement> {
+
     parse(xml: XMLElement): Milestone {
 
         const endElement = (xml.getAttribute('spanTo')) ? getExternalElements(xml, ['spanTo'], 'xml:id', 'anchor') : [];
         const includedElements = (endElement.length !== 0) ? getElementsBetweenTreeNode(xml, endElement[0]) : [];
+
         const parsedElements = (includedElements.length !== 0) ?
             includedElements.map((x: XMLElement) => (x.nodeType !== 3 && x.nodeType !== 8) ? super.parse(x) : x) : [];
 
@@ -487,6 +489,8 @@ export class AnchorParser extends GenericElemParser implements Parser<XMLElement
 
 @xmlParser('spanGrp', SpanParser)
 @xmlParser('span', SpanParser)
+@xmlParser('addSpan', SpanParser)
+@xmlParser('delSpan', SpanParser)
 export class SpanParser extends GenericElemParser implements Parser<XMLElement> {
     attributeParser = createParser(AttributeParser, this.genericParse);
 
@@ -514,6 +518,23 @@ export class SpanParser extends GenericElemParser implements Parser<XMLElement> 
                 attributes: this.attributeParser.parse(xml),
                 from: xml.getAttribute('from'),
                 to: xml.getAttribute('to'),
+                includedText: '',
+                includedElements: parsedElements,
+                content: parseChildren(xml, this.genericParse),
+            };
+
+        } else if ((xml.tagName === 'addSpan') || (xml.tagName === 'delSpan')) {
+            const endElement = (xml.getAttribute('spanTo')) ? getExternalElements(xml, ['spanTo'], 'xml:id', 'anchor') : [];
+            const includedElements = (endElement.length !== 0) ? getElementsBetweenTreeNode(xml, endElement[0]) : [];
+            const parsedElements = (includedElements.length !== 0) ?
+                includedElements.map((x: XMLElement) => (x.nodeType !== 3 && x.nodeType !== 8) ? super.parse(x) : x) : [];
+
+            return <Span> {
+                type: Span,
+                id: xml.getAttribute('xml:id'),
+                attributes: this.attributeParser.parse(xml),
+                from: xml.getAttribute('xml:id'),
+                to: xml.getAttribute('spanTo'),
                 includedText: '',
                 includedElements: parsedElements,
                 content: parseChildren(xml, this.genericParse),
@@ -579,5 +600,19 @@ export class CitParser extends DisambiguationParser implements Parser<XMLElement
         if (quote) {
             return this.quoteParser.parse(quote);
         }
+    }
+}
+
+@xmlParser('subst', SubstParser)
+export class SubstParser extends GenericElemParser implements Parser<XMLElement> {
+    parse(xml: XMLElement): Subst {
+        let parsing = {
+            ...super.parse(xml),
+            type: Subst,
+            after: [],
+        }
+        parsing.after = parsing.content.filter((el) => (el['type']) && (el['type'] !== Deletion));
+
+        return parsing;
     }
 }

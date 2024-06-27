@@ -81,8 +81,6 @@ export function chainDeepTexts(elem: ChildNode, evtInnerTextElements: string[]):
 
 /**
 * Retrieve elements in all the document searching between provided elements types and filtering on attributes base
-* It searches all document for a bibl with the correct xml:id.
-* It would be faster if we knew the id or unique element to search in
 */
 export function getExternalElements(elem: XMLElement, attrSourceNames: string[], attrTargetName: string, elTypes: string): XMLElement[] {
   const sourceIDs = attrSourceNames.map((x) => elem.getAttribute(x));
@@ -107,12 +105,8 @@ export function isAnalogue(elem: XMLElement, markerAttrs: string[]): boolean {
  * If an element has one of the provided attributes then it is considered a source
  */
 export function isSource(elem: XMLElement, attrs: string[]): boolean {
-  let isSelectedAttributes = false;
-  attrs.forEach((attr) => {
-    if (elem.getAttribute(attr) !== null)
-      { isSelectedAttributes = true }
-    },
-  );
+  let validAttrs = false;
+  attrs.forEach((attr) => { if (elem.getAttribute(attr) !== null) { validAttrs = true } });
 
-  return (isSelectedAttributes);
+  return (validAttrs);
 }

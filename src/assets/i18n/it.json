@@ -195,4 +195,8 @@
   "desc": "Decrescente",
   "reprintedIn": "Rist. in",
   "editedBy": "A cura di"
+  "corrSeq": "Sequenza correzioni",
+  "criticalNote": "Nota critica",
+  "showsDeletions": "Mostra cancellazioni",
+  "hidesDeletions": "Nascondi cancellazioni"
 }
