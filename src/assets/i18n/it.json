@@ -49,6 +49,7 @@
   "missingP": "mancanti",
   "omitted": "omissione",
   "prose": "Prosa",
+  "proseWithVerseNumbers": "Prosa con numeri dei versi",
   "verses": "Versi",
   "page": "Pagina {{value}}",
   "front": "Front",
@@ -194,7 +195,7 @@
   "asc": "Crescente",
   "desc": "Decrescente",
   "reprintedIn": "Rist. in",
-  "editedBy": "A cura di"
+  "editedBy": "A cura di",
   "corrSeq": "Sequenza correzioni",
   "criticalNote": "Nota critica",
   "showsDeletions": "Mostra cancellazioni",

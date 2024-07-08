@@ -50,6 +50,7 @@
     "missingP": "missing",
     "omitted": "omitted",
     "prose": "Prose",
+    "proseWithVerseNumbers": "Prose with verse numbers",
     "verses": "Verses",
     "page": "Page {{value}}",
     "front": "Front",
@@ -195,7 +196,7 @@
     "asc": "Ascendent",
     "desc": "Descendent",
     "reprintedIn": "Repr. in",
-    "editedBy": "Edited by"
+    "editedBy": "Edited by",
     "corrSeq": "Correction sequence",
     "criticalNote": "Critical note",
     "showsDeletions": "Show deletions",
