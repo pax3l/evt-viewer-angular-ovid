@@ -12,9 +12,9 @@ export class VerseProseSelectComponent {
 
   @Output() textModeSelectionChange: EventEmitter<TextFlow> = new EventEmitter();
 
-  public textFlowTypes: TextFlow[] = ['prose', 'proseWithVerseNumbers', 'verses'];
+  public textFlowTypes: TextFlow[] = ['prose', 'prose_strict', 'verses'];
 
-  public selectedType: TextFlow = null;
+  public selectedType: TextFlow = 'prose';
 
   getProseVersesTogglerIcon(textFlowMode: TextFlow): EvtIconInfo {
     return { icon: textFlowMode === 'verses' ? 'align-justify' : 'align-left', iconSet: 'fas' };

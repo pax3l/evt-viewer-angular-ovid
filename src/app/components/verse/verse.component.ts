@@ -45,6 +45,10 @@ export class VerseComponent {
     return !isNaN(num) && num % this.verseNumberPrinter !== 0;
   }
 
+  get plainTextFlow() {
+    return this.textFlow === 'prose_strict';
+  }
+
   constructor(
     private evtModelService: EVTModelService,
   ) {

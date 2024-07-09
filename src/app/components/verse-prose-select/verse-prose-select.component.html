@@ -3,20 +3,20 @@
     [multiple]="false" 
     [closeOnSelect]="true" 
     [searchable]="false"
-    [placeholder]="'selectItems' | translate"
+    [placeholder]="'Text Flow' | translate"
     [(ngModel)]="selectedType" 
     [disabled]="textFlowTypes.length === 0"
     [clearable]="false"
     (change)="updateSelectedType($event)">
     <ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index" let-search="searchTerm">
         <evt-icon [iconInfo]="getProseVersesTogglerIcon(item)"></evt-icon>
-        <span class="ng-value-label"> {{item | translate}}</span>
+        <span class="ng-value-label"> {{'option_' + item | translate}}</span>
     </ng-template>
     <ng-template ng-label-tmp let-item="item">
         <evt-icon
             [iconInfo]="getProseVersesTogglerIcon(item)"
             label-left>
         </evt-icon>
-        {{item | translate}}
+        {{'option_' + item | translate}}
     </ng-template>
 </ng-select>

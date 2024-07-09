@@ -40,6 +40,10 @@ export class LbComponent {
     );
   }
 
+  get plainTextFlow() {
+    return this.textFlow === 'prose_strict';
+  }
+
   get displayInline$() {
     return this.displayBlock$.pipe(
       map((displayBlock) => !displayBlock),

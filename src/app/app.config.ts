@@ -236,4 +236,4 @@ export interface CustomEditorialConvention {
     };
 }
 
-export type TextFlow = 'prose' | 'proseWithVerseNumbers' | 'verses';
+export type TextFlow = 'prose' | 'prose_strict' | 'verses';
