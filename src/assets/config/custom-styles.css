@@ -32,10 +32,6 @@
     vertical-align: text-bottom;
 }
 
-evt-verse {
-    display: block;
-}
-
 evt-page :not(evt-apparatus-entry-detail) .head {
     font-weight: bold;
     display: inline-block;

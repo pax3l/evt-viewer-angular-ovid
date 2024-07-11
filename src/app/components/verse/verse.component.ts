@@ -45,8 +45,12 @@ export class VerseComponent {
     return !isNaN(num) && num % this.verseNumberPrinter !== 0;
   }
 
+  get baloon() {
+    return this.textFlow !== 'verses';
+  }
+
   get plainTextFlow() {
-    return this.textFlow === 'prose_strict';
+    return this.textFlow === 'prose';
   }
 
   constructor(
