@@ -12,7 +12,7 @@ export class VerseProseSelectComponent {
 
   @Output() textModeSelectionChange: EventEmitter<TextFlow> = new EventEmitter();
 
-  public textFlowTypes: TextFlow[] = ['prose', 'prose_strict', 'verses'];
+  public textFlowTypes: TextFlow[] = ['prose_strict', 'prose', 'verses'];
 
   public selectedType: TextFlow = 'prose';
 
