@@ -28,6 +28,7 @@ export class VerseComponent {
         // unless current text flow is prose
         // In critical edition verses are always shown as block items, unless current text flow is prose
         switch (this.editionLevel) {
+          case 'changesView':
           case 'diplomatic':
           case 'interpretative':
             return this.textFlow === 'verses' || !hasLines;
