@@ -181,6 +181,7 @@ export interface EditionConfig {
     }>;
     startingFromDefinitiveLayer: boolean;
     defaultImageZoomLevel: number;
+    maxImageZoomLevel: number;
     showSubstitutionMarker: boolean;
     multiPageEngineForCriticalEdition: boolean;
 }
