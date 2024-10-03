@@ -152,7 +152,9 @@
     "Parallel",
     "parallel"
   ],
-  "sourcesExcludedFromListByParent": ["desc"],
+  "sourcesExcludedFromListByParent": [
+    "desc"
+  ],
   "showSubstitutionMarker": true,
   "showSeparatorBetweenChanges": true,
   "startingFromDefinitiveLayer": true,

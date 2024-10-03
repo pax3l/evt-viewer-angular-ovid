@@ -106,7 +106,9 @@
 			],
 			"properties": {
 				"titleQuotes": true,
-				"emphasized": [ "publisher" ]
+				"emphasized": [
+					"publisher"
+				]
 			}
 		},
 		"apa": {
@@ -129,12 +131,18 @@
 				},
 				"publicationStyle": {
 					"citingAcronym": "none",
-					"inBrackets": [ "issue" ]
+					"inBrackets": [
+						"issue"
+					]
 				},
 				"propsDelimiter": ".",
 				"titleQuotes": false,
-				"emphasized": [ "publication" ],
-				"inBrackets": [ "date" ]
+				"emphasized": [
+					"publication"
+				],
+				"inBrackets": [
+					"date"
+				]
 			}
 		},
 		"mla": {
@@ -155,12 +163,16 @@
 				},
 				"publicationStyle": {
 					"citingAcronym": "all",
-					"inBrackets": [ "issue" ],
+					"inBrackets": [
+						"issue"
+					],
 					"includeEditor": true
 				},
 				"dateInsidePublication": true,
 				"titleQuotes": false,
-				"emphasized": [ "publication" ]
+				"emphasized": [
+					"publication"
+				]
 			}
 		}
 	}

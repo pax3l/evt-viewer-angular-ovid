@@ -106,7 +106,9 @@
       "enable": true
     }
   ],
-  "notSignificantVariants": ["type=orthographic"],
+  "notSignificantVariants": [
+    "type=orthographic"
+  ],
   "defaultEdition": "changesView",
   "defaultViewMode": "documentalMixed",
   "proseVersesToggler": false,
@@ -149,7 +151,9 @@
     "Parallel",
     "parallel"
   ],
-  "sourcesExcludedFromListByParent": ["desc"],
+  "sourcesExcludedFromListByParent": [
+    "desc"
+  ],
   "showSubstitutionMarker": true,
   "showSeparatorBetweenChanges": true,
   "startingFromDefinitiveLayer": false,
