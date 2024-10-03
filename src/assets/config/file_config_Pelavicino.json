@@ -1,5 +1,5 @@
 {
-	"editionUrls": ["assets/data/saba.xml"],
+	"editionUrls": ["assets/data/pelavicino.xml"],
 	"editionImagesSource": {
 		"manifest": {
 			"value": "https://www.e-codices.unifr.ch/metadata/iiif/csg-0730/manifest.json",
@@ -15,8 +15,8 @@
 		"double": "assets/data/images/double/"
 	},
 	"configurationUrls": {
-		"edition": "assets/config/edition_config_Saba.json",
-		"ui": "assets/config/ui_config_Saba.json",
+		"edition": "assets/config/edition_config_Pelavicino.json",
+		"ui": "assets/config/ui_config_Pelavicino.json",
 		"editorialConventions": "assets/config/editorial_conventions_config.json"
 	}
 }

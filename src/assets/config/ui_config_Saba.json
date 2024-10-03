@@ -33,14 +33,14 @@
 			"iconSet": "evt",
 			"id": "textText",
 			"label": "Text Text",
-			"enable": true
+			"enable": false
 		},
 		{
 			"icon": "collation",
 			"iconSet": "evt",
 			"id": "collation",
 			"label": "Collation",
-			"enable": true
+			"enable": false
 		},
 		{
 			"icon": "srcTxt",
@@ -61,7 +61,7 @@
 			"iconSet": "evt",
 			"id": "documentalMixed",
 			"label": "Documental",
-			"enable": false
+			"enable": true
 		}
 	],
 	"localization": true,
