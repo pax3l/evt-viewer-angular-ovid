@@ -6,26 +6,26 @@
 		{
 			"id": "diplomatic",
 			"label": "diplomatic",
-      "enable": true,
-      "hidden": false
+            "enable": true,
+            "hidden": false
 		},
 		{
 			"id": "interpretative",
 			"label": "interpretative",
-      "enable": true,
-      "hidden": false
+            "enable": true,
+            "hidden": false
 		},
 		{
 			"id": "critical",
 			"label": "critical",
-      "enable": true,
-      "hidden": false
-    },
-    {
-      "id": "changesView",
-      "label": "changes",
-      "enable": true,
-      "hidden": true
+            "enable": true,
+            "hidden": false
+        },
+        {
+            "id": "changesView",
+            "label": "changes",
+            "enable": true,
+            "hidden": true
 		}
 	],
   "downloadableXMLSource": true,
@@ -115,8 +115,8 @@
 	"defaultTextFlow": "prose",
 	"verseNumberPrinter": 5,
 	"readingColorLight": "rgb(208, 220, 255)",
-  "readingColorDark": "rgb(101, 138, 255)",
-  "externalBibliography": {
+    "readingColorDark": "rgb(101, 138, 255)",
+    "externalBibliography": {
     "biblAttributeToMatch": "xml:id",
     "elementAttributesToMatch": [
       "target",
