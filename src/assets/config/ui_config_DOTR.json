@@ -5,14 +5,14 @@
 			"iconSet": "fas",
 			"id": "imageImage",
 			"label": "Image-Image",
-			"enable": false
+			"enable": true
 		},
 		{
 			"icon": "image",
 			"iconSet": "fas",
 			"id": "imageOnly",
 			"label": "Image only",
-			"enable": false
+			"enable": true
 		},
 		{
 			"icon": "txt",
@@ -40,7 +40,7 @@
 			"iconSet": "evt",
 			"id": "collation",
 			"label": "Collation",
-			"enable": true
+			"enable": false
 		},
 		{
 			"icon": "srcTxt",
@@ -86,7 +86,7 @@
 	"mainFontSize": "1.1rem",
 	"secondaryfontFamily": "Arial, sans-serif",
 	"secondaryfontSize": "1.1em",
-	"theme": "modern",
+	"theme": "classic",
 	"syncZonesHighlightButton": true,
 	"defaultBibliographicStyle": "chicago",
 	"allowedBibliographicStyles": {

@@ -1,7 +1,7 @@
 {
-  "editionTitle": "My Digital Edition",
-  "badge": "alpha",
-  "editionHome": "evt.labcd.unipi.it/",
+  "editionTitle": "Progetto Saba1919",
+  "badge": "beta",
+  "editionHome": "",
   "availableEditionLevels": [
     {
       "id": "diplomatic",
@@ -28,7 +28,7 @@
       "hidden": true
     }
   ],
-  "downloadableXMLSource": true,
+  "downloadableXMLSource": false,
   "namedEntitiesLists": {
     "persons": {
       "defaultLabel": "Persons",
@@ -109,9 +109,9 @@
   "notSignificantVariants": [
     "type=orthographic"
   ],
-  "defaultEdition": "critical",
-  "defaultViewMode": "collation",
-  "proseVersesToggler": true,
+  "defaultEdition": "changesView",
+  "defaultViewMode": "documentalMixed",
+  "proseVersesToggler": false,
   "defaultTextFlow": "prose",
   "verseNumberPrinter": 5,
   "readingColorLight": "rgb(208, 220, 255)",
@@ -143,8 +143,7 @@
       "showVarSeqAttr": false,
       "showSeqAttr": false,
       "layerColors": []
-    },
-    "defaultImageZoomLevel": 0.8
+    }
   },
   "analogueMarkers": [
     "ParallelPassage",
@@ -157,7 +156,7 @@
   ],
   "showSubstitutionMarker": true,
   "showSeparatorBetweenChanges": true,
-  "startingFromDefinitiveLayer": true,
+  "startingFromDefinitiveLayer": false,
   "showChangeLayerMarkerInText": true,
   "changeSequenceView": {
     "showVarSeqAttr": false,
@@ -172,6 +171,6 @@
     }
   },
   "defaultImageZoomLevel": 0.8,
-  "maxImageZoomLevel": 2,
-  "multiPageEngineForCriticalEdition": false
+  "multiPageEngineForCriticalEdition": false,
+  "syncZonesHighlightButton": false
 }

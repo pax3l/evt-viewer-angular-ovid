@@ -25,15 +25,15 @@
 			"icon": "imgTxt",
 			"iconSet": "evt",
 			"id": "imageText",
-			"label": "Image Text",
-			"enable": true
+			"label": "Image - Text",
+			"enable": false
 		},
 		{
 			"icon": "txtTxt",
 			"iconSet": "evt",
 			"id": "textText",
-			"label": "Text Text",
-			"enable": true
+			"label": "Text - Text",
+			"enable": false
 		},
 		{
 			"icon": "collation",
@@ -78,9 +78,9 @@
 			"enable": true
 		}
 	],
-	"enableNavBar": true,
+	"enableNavBar": false,
 	"initNavBarOpened": true,
-	"thumbnailsButton": true,
+	"thumbnailsButton": false,
 	"viscollButton": false,
 	"mainFontFamily": "Junicode, Times, serif",
 	"mainFontSize": "1.1rem",
