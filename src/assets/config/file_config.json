@@ -1,6 +1,6 @@
 {
 	"editionUrls": [
-		"assets/data/saba.xml"
+		"assets/data/pelavicino.xml"
 	],
 	"editionImagesSource": {
 		"manifest": {
@@ -17,8 +17,8 @@
 		"double": "assets/data/images/double/"
 	},
 	"configurationUrls": {
-		"edition": "assets/config/edition_config_Saba.json",
-		"ui": "assets/config/ui_config_Saba.json",
+		"edition": "assets/config/edition_config.json",
+		"ui": "assets/config/ui_config.json",
 		"editorialConventions": "assets/config/editorial_conventions_config.json"
 	}
 }
