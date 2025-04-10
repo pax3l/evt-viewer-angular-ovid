@@ -1,6 +1,6 @@
 {
-  "editionTitle": "My Digital Edition",
-  "badge": "alpha",
+  "editionTitle": "Les divinités dans les Métamorphoses d'Ovide",
+  "badge": "Apollon et Minerve",
   "editionHome": "evt.labcd.unipi.it/",
   "availableEditionLevels": [
     {
@@ -18,8 +18,8 @@
     {
       "id": "critical",
       "label": "critical",
-      "enable": true,
-      "hidden": false
+      "enable": false,
+      "hidden": true
     },
     {
       "id": "changesView",
@@ -30,17 +30,17 @@
   ],
   "downloadableXMLSource": true,
   "namedEntitiesLists": {
-    "persons": {
-      "defaultLabel": "Persons",
+    "MIN": {
+      "defaultLabel": "Minerve",
       "enable": true
     },
-    "places": {
-      "defaultLabel": "Places",
-      "enable": true
+    "APO": {
+      "defaultLabel": "Apollon",
+      "enable": false
     },
     "organizations": {
       "defaultLabel": "Organizations",
-      "enable": true
+      "enable": false
     },
     "relations": {
       "defaultLabel": "Relations",
@@ -54,31 +54,49 @@
   "showLists": true,
   "entitiesSelectItems": [
     {
-      "label": "Named Entities",
+      "label": "Entités nommées",
       "items": [
         {
           "value": "persName",
-          "label": "persons",
-          "color": "#ffcdd2",
+          "label": "Divinités",
+          "color": "#ff4aff",
           "enable": true
         },
         {
-          "value": "persName[type='episcopus']",
-          "label": "bishops",
-          "color": "rgb(139, 98, 236)",
+          "value": "persName[ana='act']",
+          "label": "Acteur de métamorphose",
+          "color": "#6698ed",
+          "enable": true
+        },
+        {
+          "value": "persName[ana='auto']",
+          "label": "Acteur de sa propre métamorphose",
+          "color": "#f7a760",
+          "enable": true
+        },
+        {
+          "value": "persName[ana='obj']",
+          "label": "Objet de métamorphose",
+          "color": "#f7a760",
+          "enable": true
+        },
+        {
+          "value": "persName[ana='NA']",
+          "label": "Pas de lien avec une métamorphose ici",
+          "color": "#995079m",
           "enable": true
         },
         {
           "value": "placeName,geogName",
           "label": "places",
           "color": "#A5D6A7",
-          "enable": true
+          "enable": false
         },
         {
           "value": "orgName",
           "label": "organizations",
           "color": "#FFB74D",
-          "enable": true
+          "enable": false
         }
       ],
       "enable": true
@@ -103,16 +121,16 @@
           "enable": true
         }
       ],
-      "enable": true
+      "enable": false
     }
   ],
   "notSignificantVariants": [
     "type=orthographic"
   ],
-  "defaultEdition": "critical",
-  "defaultViewMode": "collation",
+  "defaultEdition": "diplomatic",
+  "defaultViewMode": "interpretative",
   "proseVersesToggler": true,
-  "defaultTextFlow": "prose",
+  "defaultTextFlow": "verses",
   "verseNumberPrinter": 5,
   "readingColorLight": "rgb(208, 220, 255)",
   "readingColorDark": "rgb(101, 138, 255)",
