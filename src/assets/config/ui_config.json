@@ -40,7 +40,7 @@
 			"iconSet": "evt",
 			"id": "collation",
 			"label": "Collation",
-			"enable": true
+			"enable": false
 		},
 		{
 			"icon": "srcTxt",
@@ -73,13 +73,18 @@
 			"enable": true
 		},
 		{
+			"code": "fr",
+			"label": "languageFr",
+			"enable": true
+		},
+		{
 			"code": "it",
 			"label": "languageIt",
 			"enable": true
 		}
 	],
 	"enableNavBar": true,
-	"initNavBarOpened": true,
+	"initNavBarOpened": false,
 	"thumbnailsButton": true,
 	"viscollButton": false,
 	"mainFontFamily": "Junicode, Times, serif",
