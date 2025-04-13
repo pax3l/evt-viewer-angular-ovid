@@ -1,6 +1,6 @@
 {
 	"editionUrls": [
-		"https://github.com/pax3l/evt-viewer-angular-ovid/blob/master/src/assets/data/deities_pallas_phebus.xml"
+		"assets/data/deities_pallas_phebus.xml"
 	],
 	"editionImagesSource": {
 		"manifest": {
